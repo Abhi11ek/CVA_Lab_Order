@@ -1,0 +1,74 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+<mvc:View controllerName="com.amat.spg.labord.controller.summary.Assignment" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout">
+	<VBox>
+		<Toolbar class="spgLabOrdTabBar spgLabMBE1" height="2.25rem">
+			<Text text="{i18n>serviceTeamHeading}" class="spgLabOrdTabTitle spgLabOrdMT1"/>
+			<ToolbarSpacer/>
+		</Toolbar>
+		<VBox class="spgLabOrdGridBorder" items="{path: 'ToAssignments', filters: [{path: 'IvServiceTeamFlag', operator: 'EQ', value1: 'X'}]}">
+			<Text wrapping="true" text="{Fullname}" class="spgLabOrdSericeTeamText spgLabOrdTeamsText"/>
+		</VBox>
+		<Toolbar class="spgLabOrdTabBar spgLabMBE1" height="2.25rem">
+			<Text text="{i18n>serviceTechniciansHeading}" class="spgLabOrdTabTitle spgLabOrdMT1"/>
+			<ToolbarSpacer/>
+			<Button type="Accept" icon="sap-icon://add" text="{i18n>addButtonText}" press="onPressAddTechnician" visible="{labOrd>/bModifyWO}" class="spgLabOrdMT1" />
+		</Toolbar>
+		<ScrollContainer width="100%" focusable="false" class="spgLabOrdGridBorder spgLabOrdAsgnGridHeight">
+			<l:Grid id="idServiceTechGrid" defaultSpan="L4 M4 S12"
+				content="{path: 'ToAssignments', filters: [{path: 'IvServiceTechFlag', operator: 'EQ', value1: 'X'}]}" class="spgLabOrdGrid">
+				<l:content>
+					<HBox height="{= ${device>/system/phone} ? '3.75rem' : '4.25rem'}" alignItems="Center" class="spgLabOrdP4 spgLabOrdGridBox">
+						<VBox class="spgLabOrdMRA">
+							<Text text="{Fullname}" class="spgLabOrdTechnicianName" visible="{= ${ErrorMessage}.length === 0}"/>
+							<Text text="{ErrorMessage}" visible="{= ${ErrorMessage}.length &gt; 0}"/>
+						</VBox>
+						<Button icon="sap-icon://delete" visible="{= ${ErrorMessage}.length === 0 &amp;&amp; ${labOrd>/bModifyWO}}" press="handleDeletePartner" class="spgLabOrdCompleteWOBtn" />
+					</HBox>
+				</l:content>
+			</l:Grid>
+		</ScrollContainer>
+		<!-- Start of PCR035112++ changes -->
+		<Toolbar class="spgLabOrdTabBar spgLabMBE1" height="2.25rem">
+			<Text text="{i18n>woApprovers}" class="spgLabOrdTabTitle spgLabOrdMT1"/>
+			<ToolbarSpacer/>
+		</Toolbar>
+		<ScrollContainer width="100%" focusable="false" class="spgLabOrdGridBorder spgLabOrdAsgnGridHeight">
+			<l:Grid id="idApproversGrid" defaultSpan="L4 M4 S12"
+				content="{path: 'ToApprovers'}" class="spgLabOrdGrid">
+				<l:content>
+					<HBox height="{= ${device>/system/phone} ? '3.75rem' : '4.25rem'}" alignItems="Center" class="spgLabOrdP4 spgLabOrdGridBox">
+						<VBox class="spgLabOrdMRA">
+							<Text text="{Fullname}" class="spgLabOrdTechnicianName" visible="{= ${ErrorMessage}.length === 0}"/>
+							<Text text="{ErrorMessage}" visible="{= ${ErrorMessage}.length &gt; 0}"/>
+						</VBox>
+					</HBox>
+				</l:content>
+			</l:Grid>
+		</ScrollContainer>
+		<!-- End of PCR035112++ changes -->
+		<Toolbar class="spgLabOrdTabBar spgLabMBE1" height="2.25rem">
+			<Text text="{i18n>otherPartnersHeading}" class="spgLabOrdTabTitle spgLabOrdMT1"/>
+			<ToolbarSpacer/>
+		</Toolbar>
+		<ScrollContainer width="100%" focusable="false" class="spgLabOrdGridBorder spgLabOrdAsgnGridHeight">
+			<l:Grid id="idOtherPartnersGrid" defaultSpan="L4 M4 S12" class="spgLabOrdGrid"
+				content="{path: 'ToAssignments', filters: [{path: 'IvOtherPartners', operator: 'EQ', value1: 'X'}]}">
+				<l:content>
+					<VBox height="5.25rem" class="spgLabOrdMRA spgLabOrdP4 spgLabOrdGridBox">
+						<Text text="{Fullname}" class="spgLabOrdTechnicianName"/>
+						<Text
+							text="{parts: [{path: 'ShiftLeadFlag'}, {path: 'LabManagerFlag'}, {path: 'ToolManagerFlag'}], formatter: '.formatter.formatAssignments'}"
+							class="spgLabOrdTechnicianRole"
+							visible="{parts: [{path: 'ShiftLeadFlag'}, {path: 'LabManagerFlag'}, {path: 'ToolManagerFlag'}], formatter: '.formatter.formatAssignmentVisibility'}"/>
+					</VBox>
+				</l:content>
+			</l:Grid>
+		</ScrollContainer>
+	</VBox>
+</mvc:View>

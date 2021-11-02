@@ -1,0 +1,313 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 10/12/2020  	Vimal Pandu			PCR032047    Phase - 2 changes					*
+ * ******************************************************************************* -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:custom="com.amat.spg.labord.extensions" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="{labOrd>/GridDefaultSpan}" class="spgLabOrdGridBorder" visible="{labOrd>/CreateEvent}">
+		<l:content>
+			<Toolbar class="spgLabOrdTabBar">
+				<Text text="{i18n>preTaskCheckList}" class="spgLabOrdTabTitle"/>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Toolbar>
+			<VBox height="5.75rem">
+				<Text wrapping="true" text="{i18n>mocLabel}" class="spgLabOrdLabel"/>
+				<custom:ComboBoxExt id="Moc" placeholder="{i18n>enter} {i18n>mocLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+					items="{path: 'labOrd>/MOC', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>mocLabel}" busy="{labOrd>/MOCBusy}"
+					busyIndicatorDelay="0">
+					<core:Item key="{labOrd>ItemID}" text="{labOrd>MOCNumber}"/>
+				</custom:ComboBoxExt>
+				<HBox alignItems="Center" class="spgLabOrdMT1">
+					<Text text="{i18n>mandatory}" class="spgLabOrdLabel sapUiTinyMarginEnd"/>
+					<Switch id="MocMandtFlag" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onPreTaskMandSwitchChange">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Switch>
+				</HBox>
+			</VBox>
+			<VBox height="5.75rem">
+				<Text wrapping="true" text="{i18n>gsrLabel}" class="spgLabOrdLabel"/>
+				<custom:ComboBoxExt id="Gsr" placeholder="{i18n>enter} {i18n>gsrLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+					items="{path: 'labOrd>/GSR', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>gsrLabel}" busy="{labOrd>/GSRBusy}"
+					busyIndicatorDelay="0">
+					<core:Item key="{labOrd>JobNumber}" text="{labOrd>JobNumber}"/>
+				</custom:ComboBoxExt>
+				<HBox alignItems="Center" class="spgLabOrdMT1">
+					<Text text="{i18n>mandatory}" class="spgLabOrdLabel sapUiTinyMarginEnd"/>
+					<Switch id="GsrMandtFlag" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onPreTaskMandSwitchChange">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Switch>
+				</HBox>
+			</VBox>
+			<VBox height="5.75rem">
+				<Text wrapping="true" text="{i18n>abatementLabel}" class="spgLabOrdLabel"/>
+				<custom:ComboBoxExt id="Abatement" placeholder="{i18n>enter} {i18n>abatementLabel}" width="100%"
+					selectionChange="onPreTaskCmbxSelectionChange" items="{path: 'labOrd>/Abatement', templateShareable:false}"
+					valueStateText="{i18n>enterValid} {i18n>abatementLabel}" busy="{labOrd>/AbatementBusy}" busyIndicatorDelay="0">
+					<core:Item key="{labOrd>RevisionNumber}" text="{labOrd>RevisionNumber}"/>
+				</custom:ComboBoxExt>
+				<HBox alignItems="Center" class="spgLabOrdMT1">
+					<Text text="{i18n>mandatory}" class="spgLabOrdLabel sapUiTinyMarginEnd"/>
+					<Switch id="AbatementMandtFlag" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onPreTaskMandSwitchChange">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Switch>
+				</HBox>
+			</VBox>
+			<VBox height="5.75rem">
+				<Text text="{i18n>chemicalAuth}" wrapping="true" class="spgLabOrdLabel"/>
+				<custom:ComboBoxExt id="ChemAuth" placeholder="{i18n>enter} {i18n>chemicalAuth}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+					items="{path: 'labOrd>/ChemAuth', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>chemicalAuth}"
+					busy="{labOrd>/ChemAuthBusy}" busyIndicatorDelay="0">
+					<core:Item key="{labOrd>ProductName}" text="{labOrd>ProductName}"/>
+				</custom:ComboBoxExt>
+				<HBox alignItems="Center" class="spgLabOrdMT1">
+					<Text text="{i18n>mandatory}" class="spgLabOrdLabel sapUiTinyMarginEnd"/>
+					<Switch id="CauthMandtFlag" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onPreTaskMandSwitchChange">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Switch>
+				</HBox>
+			</VBox>
+			<VBox height="5.75rem">
+				<Text wrapping="true" text="{i18n>pasrLabel}" class="spgLabOrdLabel"/>
+				<custom:ComboBoxExt id="Pasr" placeholder="{i18n>enter} {i18n>pasrLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+					items="{path: 'labOrd>/PASR', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>pasrLabel}" busy="{labOrd>/PASRBusy}"
+					busyIndicatorDelay="0">
+					<core:Item key="{labOrd>EquipmentID}" text="{labOrd>EquipmentID}"/>
+				</custom:ComboBoxExt>
+				<HBox alignItems="Center" class="spgLabOrdMT1">
+					<Text text="{i18n>mandatory}" class="spgLabOrdLabel sapUiTinyMarginEnd"/>
+					<Switch id="PasrMandtFlag" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onPreTaskMandSwitchChange">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Switch>
+				</HBox>
+			</VBox>
+			<VBox height="5.75rem">
+				<Text wrapping="true" text="{i18n>fsrLabel}" class="spgLabOrdLabel"/>
+				<custom:ComboBoxExt id="Fsr" placeholder="{i18n>enter} {i18n>fsrLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+					items="{path: 'labOrd>/FSR', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>fsrLabel}" busy="{labOrd>/FSRBusy}"
+					busyIndicatorDelay="0">
+					<core:Item key="{labOrd>FSRID}" text="{labOrd>FSRID}"/>
+				</custom:ComboBoxExt>
+				<HBox alignItems="Center" class="spgLabOrdMT1">
+					<Text text="{i18n>mandatory}" class="spgLabOrdLabel sapUiTinyMarginEnd"/>
+					<Switch id="FsrMandtFlag" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onPreTaskMandSwitchChange">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Switch>
+				</HBox>
+			</VBox>
+		</l:content>
+	</l:Grid>
+	<l:Grid defaultSpan="{labOrd>/GridDefaultSpan}" class="spgLabOrdGridBorder" visible="{= !${labOrd>/CreateEvent}}">
+		<l:content>
+			<Toolbar class="spgLabOrdTabBar">
+				<Text text="{i18n>preTaskCheckList}" class="spgLabOrdTabTitle"/>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Toolbar>
+			<Table id="idPreTaskChecklistTable" inset="false" width="100%" noDataText="{i18n>preTaskCheckListTableNoDataText}" mode="None">
+				<columns>
+					<Column>
+						<Text text="{i18n>preRequisite}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>mandatory}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Desktop">
+						<Text text="{i18n>number}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>status}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+						<cells>
+							<Text text="{labOrd>/PreTaskCheckList/MOC/PreRequiste}"/>
+							<VBox>
+								<ObjectIdentifier title="{labOrd>/PreTaskCheckList/MOC/Mandatory}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<Switch change="onPreTaskMandSwitchChange" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}"
+									visible="{= ${labOrd>/UpdateEvent}}">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+							</VBox>
+							<VBox>
+								<!--Start of PCR032047++ changes-->
+								<!--<Text text="{labOrd>/PreTaskCheckList/MOC/Number}" visible="{= !${labOrd>/UpdateEvent}}"/>-->
+								<Link class="spgLabOrdPreTaskChecListHyperLink" text="{labOrd>/PreTaskCheckList/MOC/Number}" target="_blank"
+									href="{labOrd>/PreTaskCheckList/MOC/LinkUrl}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<!--End of PCR032047++ changes-->
+								<custom:ComboBoxExt placeholder="{i18n>enter} {i18n>mocLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+									items="{path: 'labOrd>/MOC', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>mocLabel}" busy="{labOrd>/MOCBusy}"
+									busyIndicatorDelay="0" visible="{= ${labOrd>/UpdateEvent}}">
+									<core:Item key="{labOrd>ItemID}" text="{labOrd>MOCNumber}"/>
+								</custom:ComboBoxExt>
+							</VBox>
+							<ObjectStatus text="{labOrd>/PreTaskCheckList/MOC/Status}"
+								state="{path: 'labOrd>/PreTaskCheckList/MOC/Status', formatter: '.formatter.formatTaskListStatus'}"/>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+						<cells>
+							<Text text="{labOrd>/PreTaskCheckList/GSR/PreRequiste}"/>
+							<VBox>
+								<ObjectIdentifier title="{labOrd>/PreTaskCheckList/GSR/Mandatory}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<Switch change="onPreTaskMandSwitchChange" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}"
+									visible="{= ${labOrd>/UpdateEvent}}">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+							</VBox>
+							<VBox>
+								<!--Start of PCR032047++ changes-->
+								<!--<Text text="{labOrd>/PreTaskCheckList/GSR/Number}" visible="{= !${labOrd>/UpdateEvent}}"/>-->
+								<Link class="spgLabOrdPreTaskChecListHyperLink" text="{labOrd>/PreTaskCheckList/GSR/Number}" target="_blank"
+									href="{labOrd>/PreTaskCheckList/GSR/LinkUrl}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<!--End of PCR032047++ changes-->
+								<custom:ComboBoxExt placeholder="{i18n>enter} {i18n>gsrLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+									items="{path: 'labOrd>/GSR', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>gsrLabel}" busy="{labOrd>/GSRBusy}"
+									busyIndicatorDelay="0" visible="{= ${labOrd>/UpdateEvent}}">
+									<core:Item key="{labOrd>JobNumber}" text="{labOrd>JobNumber}"/>
+								</custom:ComboBoxExt>
+							</VBox>
+							<ObjectStatus text="{labOrd>/PreTaskCheckList/GSR/Status}"
+								state="{path: 'labOrd>/PreTaskCheckList/GSR/Status', formatter: '.formatter.formatTaskListStatus'}"/>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+						<cells>
+							<Text text="{labOrd>/PreTaskCheckList/Abatement/PreRequiste}"/>
+							<VBox>
+								<ObjectIdentifier title="{labOrd>/PreTaskCheckList/Abatement/Mandatory}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<Switch change="onPreTaskMandSwitchChange" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}"
+									visible="{= ${labOrd>/UpdateEvent}}">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+							</VBox>
+							<VBox>
+								<!--Start of PCR032047++ changes-->
+								<!--<Text text="{labOrd>/PreTaskCheckList/Abatement/RevisionNumber}" visible="{= !${labOrd>/UpdateEvent}}"/>-->
+								<Link class="spgLabOrdPreTaskChecListHyperLink" text="{labOrd>/PreTaskCheckList/Abatement/Number}" target="_blank"
+									href="{labOrd>/PreTaskCheckList/Abatement/LinkUrl}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<!--End of PCR032047++ changes-->
+								<custom:ComboBoxExt placeholder="{i18n>enter} {i18n>abatementLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+									items="{path: 'labOrd>/Abatement', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>abatementLabel}"
+									busy="{labOrd>/AbatementBusy}" busyIndicatorDelay="0" visible="{= ${labOrd>/UpdateEvent}}">
+									<core:Item key="{labOrd>RevisionNumber}" text="{labOrd>RevisionNumber}"/>
+								</custom:ComboBoxExt>
+							</VBox>
+							<ObjectStatus text="{labOrd>/PreTaskCheckList/Abatement/Status}"
+								state="{path: 'labOrd>/PreTaskCheckList/Abatement/Status', formatter: '.formatter.formatTaskListStatus'}"/>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+						<cells>
+							<Text text="{labOrd>/PreTaskCheckList/ChemAuth/PreRequiste}"/>
+							<VBox>
+								<ObjectIdentifier title="{labOrd>/PreTaskCheckList/ChemAuth/Mandatory}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<Switch change="onPreTaskMandSwitchChange" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}"
+									visible="{= ${labOrd>/UpdateEvent}}">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+							</VBox>
+							<VBox>
+								<!--Start of PCR032047++ changes-->
+								<!--<Text text="{labOrd>/PreTaskCheckList/ChemAuth/Number}" visible="{= !${labOrd>/UpdateEvent}}"/>-->
+								<Link class="spgLabOrdPreTaskChecListHyperLink" text="{labOrd>/PreTaskCheckList/ChemAuth/Number}" target="_blank"
+									href="{labOrd>/PreTaskCheckList/ChemAuth/LinkUrl}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<!--End of PCR032047++ changes-->
+								<custom:ComboBoxExt placeholder="{i18n>enter} {i18n>chemicalAuth}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+									items="{path: 'labOrd>/ChemAuth', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>chemicalAuth}"
+									busy="{labOrd>/ChemAuthBusy}" busyIndicatorDelay="0" visible="{= ${labOrd>/UpdateEvent}}">
+									<core:Item key="{labOrd>ProductName}" text="{labOrd>ProductName}"/>
+								</custom:ComboBoxExt>
+							</VBox>
+							<ObjectStatus text="{labOrd>/PreTaskCheckList/ChemAuth/Status}"
+								state="{path: 'labOrd>/PreTaskCheckList/ChemAuth/Status', formatter: '.formatter.formatTaskListStatus'}"/>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+						<cells>
+							<Text text="{labOrd>/PreTaskCheckList/PASR/PreRequiste}"/>
+							<VBox>
+								<ObjectIdentifier title="{labOrd>/PreTaskCheckList/PASR/Mandatory}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<Switch change="onPreTaskMandSwitchChange" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}"
+									visible="{= ${labOrd>/UpdateEvent}}">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+							</VBox>
+							<VBox>
+								<!--Start of PCR032047++ changes-->
+								<!--<Text text="{labOrd>/PreTaskCheckList/PASR/Number}" visible="{= !${labOrd>/UpdateEvent}}"/>-->
+								<Link class="spgLabOrdPreTaskChecListHyperLink" text="{labOrd>/PreTaskCheckList/PASR/Number}" target="_blank"
+									href="{labOrd>/PreTaskCheckList/PASR/LinkUrl}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<!--End of PCR032047++ changes-->
+								<custom:ComboBoxExt placeholder="{i18n>enter} {i18n>pasrLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+									items="{path: 'labOrd>/PASR', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>pasrLabel}" busy="{labOrd>/PASRBusy}"
+									busyIndicatorDelay="0" visible="{= ${labOrd>/UpdateEvent}}">
+									<core:Item key="{labOrd>EquipmentID}" text="{labOrd>EquipmentID}"/>
+								</custom:ComboBoxExt>
+							</VBox>
+							<ObjectStatus text="{labOrd>/PreTaskCheckList/PASR/Status}"
+								state="{path: 'labOrd>/PreTaskCheckList/PASR/Status', formatter: '.formatter.formatTaskListStatus'}"/>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+						<cells>
+							<Text text="{labOrd>/PreTaskCheckList/FSR/PreRequiste}"/>
+							<VBox>
+								<ObjectIdentifier title="{labOrd>/PreTaskCheckList/FSR/Mandatory}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<Switch change="onPreTaskMandSwitchChange" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}"
+									visible="{= ${labOrd>/UpdateEvent}}">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+							</VBox>
+							<VBox>
+								<!--Start of PCR032047++ changes-->
+								<!--<Text text="{labOrd>/PreTaskCheckList/FSR/Number}" visible="{= !${labOrd>/UpdateEvent}}"/>-->
+								<Link class="spgLabOrdPreTaskChecListHyperLink" text="{labOrd>/PreTaskCheckList/FSR/Number}" target="_blank"
+									href="{labOrd>/PreTaskCheckList/FSR/LinkUrl}" visible="{= !${labOrd>/UpdateEvent}}"/>
+								<!--End of PCR032047++ changes-->
+								<custom:ComboBoxExt placeholder="{i18n>enter} {i18n>fsrLabel}" width="100%" selectionChange="onPreTaskCmbxSelectionChange"
+									items="{path: 'labOrd>/FSR', templateShareable:false}" valueStateText="{i18n>enterValid} {i18n>fsrLabel}" busy="{labOrd>/FSRBusy}"
+									busyIndicatorDelay="0" visible="{= ${labOrd>/UpdateEvent}}">
+									<core:Item key="{labOrd>FSRID}" text="{labOrd>FSRID}"/>
+								</custom:ComboBoxExt>
+							</VBox>
+							<ObjectStatus text="{labOrd>/PreTaskCheckList/FSR/Status}"
+								state="{path: 'labOrd>/PreTaskCheckList/FSR/Status', formatter: '.formatter.formatTaskListStatus'}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Table>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

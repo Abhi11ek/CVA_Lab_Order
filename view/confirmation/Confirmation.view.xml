@@ -1,0 +1,20 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+<mvc:View controllerName="com.amat.spg.labord.controller.confirmation.Confirmation" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	<IconTabBar id="idConfirmationIconTabBar" class="sapUiResponsiveContentPadding" expanded="true" expandable="false"
+		select="onSelectConfirmationIconTabBar" selectedKey="{confirmationView>/sIconTabSelKey}">
+		<items>
+			<IconTabFilter id="idLaborConfirmationTab" icon="sap-icon://key-user-settings" tooltip="{i18n>laborIconTabFilterTooltip}"
+				text="{i18n>laborIconTabFilterText}" key="LaborConfirmation">
+				<mvc:XMLView id="idLaborConfirmationsList" viewName="com.amat.spg.labord.view.confirmation.LaborConfirmation"/>
+			</IconTabFilter>
+			<IconTabFilter id="idPartsConfirmationTab" icon="sap-icon://settings" tooltip="{i18n>partsIconTabFilterPlaceholder}"
+				text="{i18n>partsIconTabFilterText}" key="PartsConfirmation" visible="false">
+				<!--View is loaded dynamically-->
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</mvc:View>

@@ -1,0 +1,222 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 10/12/2020  	Vimal Pandu			PCR032047    Phase - 2 changes					*
+ * 03/11/2021   Vimal Pandu			PCR033677	 Phase - 3 changes 					*
+ * ******************************************************************************* -->
+<mvc:View controllerName="com.amat.spg.labord.controller.summary.PartsRequired" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<VBox class="spgLabOrdP2 spgLabOrdM1">
+		<!-- PCR033677~~; visible="{labOrd>/bModifyWO}" -->
+		<Toolbar  class="spgLabOrdTabBar spgLabOrdMB1" height="2.25rem">
+			<!-- Start of PCR033677++ changes -->	
+			<Text text="{i18n>stagingRequired}:" class="sapUiTinyMarginEnd" />
+			<Switch state="{= ${StagingNo}.length &gt; 0}" enabled="{= ${StagingNo}.length === 0 &amp;&amp; ${PlanStartDateTime}.length &gt; 0}" customTextOn="Yes" customTextOff="No" class="sapUiSmallMarginEnd" change="onCreateStagingRequest">
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</Switch>
+			<Text text="{i18n>stagingRequest} #:" class="sapUiTinyMarginEnd" />
+			<Link text="{StagingNo}" press="onPressOpenWSMReq" class="spgLabOrdStagingNo"/>
+			<!-- End of PCR033677++ changes -->	
+			<ToolbarSpacer/>
+			<!-- PCR033677++; {labOrd>/bModifyWO} -->
+			<Link text="{i18n>partsTemplate}" press="onPressDownloadSpreadsheet" class="sapUiTinyMarginEnd" visible="{= !${device>/system/phone} &amp;&amp; ${labOrd>/bModifyWO}}"/>
+			<!-- PCR033677++; visible="{labOrd>/bModifyWO}" -->
+			<HBox visible="{labOrd>/bModifyWO}" id="idPartsTableHeaderBox" height="2rem" alignItems="Center"/>
+		</Toolbar>
+		<ScrollContainer>
+			<Table id="idPartReqHeaderTable" showNoData="false" inset="false" width="{= ${device>/system/phone} ? '70rem' : 'auto'}"
+				visible="{= !${partsReqView>/bShowAddTableHeader}}">
+				<columns>
+					<Column>
+						<CheckBox select="onPartsTableselect" id="idPartReqHeaderCheckBox" visible="{labOrd>/bModifyWO}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>partNumColHdr}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>description}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>nsoColumnHeader}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>serializedColumnHeader}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>qtyRequiredColumnHeader}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>qtySuppliedColumnHeader}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>serialNumberColumnHeader}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>lastUpdatedColumnHeader}"/>
+					</Column>
+					<Column width="{= ${device>/system/phone} ? '5rem' : '4rem'}">
+						<Text text="{i18n>actionsColumnHeader}"/>
+					</Column>
+				</columns>
+			</Table>
+			<ScrollContainer id="idPartsRequiredScrollCont" class="spgLabOrdPartsReqScrollContHeight"
+				width="{= ${device>/system/phone} ? '70rem' : 'auto'}">
+				<Table id="idPartsRequiredTable" inset="false" items="{ToParts}" mode="{= ${labOrd>/bModifyWO} ? 'MultiSelect' : 'None'}"
+					noDataText="{i18n>partsTableNoDataText}" busyIndicatorDelay="0" selectionChange="onSelectParts" includeItemInSelection="true">
+					<columns>
+						<Column>
+							<Text text="{i18n>partNumColHdr}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>description}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>nsoColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>serializedColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>qtyRequiredColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>qtySuppliedColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>serialNumberColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>lastUpdatedColumnHeader}" visible="false"/>
+						</Column>
+						<Column width="{= ${device>/system/phone} ? '5.5rem' : '4rem'}">
+							<Text text="{i18n>actionsColumnHeader}" visible="false"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+							<cells>
+								<VBox>
+									<Text text="{PartNumber}" class="spgLabOrdTableText"/>
+									<Input visible="false" placeholder="{i18n>partNumColHdr}"/>
+								</VBox>
+								<VBox>
+									<Text text="{Description}" class="spgLabOrdTableText"/>
+									<Input visible="false" placeholder="{i18n>description}"/>
+								</VBox>
+								<VBox>
+									<Text text="{NsoFlag}" class="spgLabOrdTableText"/>
+									<Switch visible="false" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onChangeNsoSerialised">
+										<layoutData>
+											<FlexItemData growFactor="1"/>
+										</layoutData>
+									</Switch>
+								</VBox>
+								<VBox>
+									<Text text="{SerializedFlag}" class="spgLabOrdTableText"/>
+									<Switch visible="false" customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onChangeNsoSerialised">
+										<layoutData>
+											<FlexItemData growFactor="1"/>
+										</layoutData>
+									</Switch>
+								</VBox>
+								<VBox>
+									<Text text="{path: 'QuantityRequired', formatter: '.formatter.formatQuantity'}" class="spgLabOrdTableText"/>
+									<!--PCR032047++; added value state text-->
+									<Input visible="false" placeholder="{i18n>qtyRequiredColumnHeader}" liveChange="onChangeQuantityRequired"
+										valueStateText="{i18n>enterValid} {i18n>qtyRequiredColumnHeader}"/>
+								</VBox>
+								<VBox>
+									<Text text="{path: 'QuantitySupplied', formatter: '.formatter.formatQuantity'}" class="spgLabOrdTableText"/>
+									<!--PCR032047++; added value state text and live change-->
+									<Input visible="false" placeholder="{i18n>qtySuppliedColumnHeader}" valueStateText="{i18n>enterValid} {i18n>qtySuppliedColumnHeader}"
+										liveChange="onMandCheckLiveChange"/>
+								</VBox>
+								<VBox>
+									<Text text="{SerialNumber}" class="spgLabOrdTableText"/>
+									<!--PCR032047++; added value state text and live change-->
+									<Input visible="false" placeholder="{i18n>serialNumberColumnHeader}" valueStateText="{i18n>enterValid} {i18n>serialNumberColumnHeader}"
+										liveChange="onMandCheckLiveChange"/>
+								</VBox>
+								<Text text="{path: 'LastUpdatedDate', formatter : '.formatter.dateFormat'}" class="spgLabOrdTableText"/>
+								<Button icon="sap-icon://history" press="onPressPartHistory"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<Table id="idAddRequiredPartsTable" inset="false" items="{partsReqView>/aParts}" mode="MultiSelect"
+					selectionChange="onAddPartTableSelectionChange" visible="false" includeItemInSelection="true">
+					<columns>
+						<Column>
+							<Text text="{i18n>partNumColHdr}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>description}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>nsoColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>serializedColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>qtyRequiredColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>qtySuppliedColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>serialNumberColumnHeader}" visible="false"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>lastUpdatedColumnHeader}" visible="false"/>
+						</Column>
+						<Column width="{= ${device>/system/phone} ? '5.5rem' : '4rem'}">
+							<Text text="{i18n>actionsColumnHeader}" visible="false"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+							<cells>
+								<Input valueStateText="{partsReqView>ErrorMessage}" valueState="{= ${partsReqView>ErrorMessage}.length &gt; 0 ? 'Error' : 'None'}"
+									change="onChangePartNumber" maxLength="{= parseInt(${/#PartsItem/PartNumber/@maxLength}, 10)}" placeholder="{i18n>partNumColHdr}"
+									value="{partsReqView>PartNumber}"/>
+									<!--PCR032047++; added enabled-->
+								<Input maxLength="{= parseInt(${/#PartsItem/Description/@maxLength}, 10)}" placeholder="{i18n>description}"
+									value="{partsReqView>Description}" enabled="false"/>
+								<Switch customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onAddNsoSerialisedChange"
+									state="{= ${partsReqView>NsoFlag} === 'Y' || ${partsReqView>NsoFlag} === 'YES'}">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+								<Switch customTextOn="{i18n>yesCustomText}" customTextOff="{i18n>noCustomText}" change="onAddNsoSerialisedChange"
+									state="{= ${partsReqView>SerializedFlag} === 'Y' || ${partsReqView>SerializedFlag} === 'YES'}">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+								<!--PCR032047++; added value state text-->
+								<Input placeholder="{i18n>qtyRequiredColumnHeader}" liveChange="onAddQuantityRequiredChange" value="{partsReqView>QuantityRequired}"
+									valueStateText="{i18n>enterValid} {i18n>qtyRequiredColumnHeader}"/>
+								<!--PCR032047++; added value state text and live change-->
+								<Input placeholder="{i18n>qtySuppliedColumnHeader}" value="{partsReqView>QuantitySupplied}"
+									valueStateText="{i18n>enterValid} {i18n>qtySuppliedColumnHeader}" liveChange="onMandCheckLiveChange"/>
+								<!--PCR032047++; added value state text and live change-->
+								<Input maxLength="{= parseInt(${/#PartsItem/SerialNumber/@maxLength}, 10)}" placeholder="{i18n>serialNumberColumnHeader}"
+									value="{partsReqView>SerialNumber}" valueStateText="{i18n>enterValid} {i18n>serialNumberColumnHeader}" liveChange="onMandCheckLiveChange"/>
+								<Text text="-" class="spgLabOrdTableText"/>
+								<HBox>
+									<Button icon="sap-icon://accept" press="onPressUpdateParts" class="sapUiTinyMarginEnd" visible="{partsReqView>bActions}"/>
+									<Button icon="sap-icon://decline" type="Reject" press="onPressRemoveNewPart" class="spgLabOrdDelBtn"/>
+								</HBox>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</ScrollContainer>
+		</ScrollContainer>
+	</VBox>
+</mvc:View>

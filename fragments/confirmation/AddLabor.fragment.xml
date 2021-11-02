@@ -1,0 +1,77 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:custom="com.amat.spg.labord.extensions" xmlns:l="sap.ui.layout">
+	<Dialog title="{i18n>newLaborConfirmationHeading}" afterClose="onDialogClose" stretch="{device>/system/phone}" class="sapUiSizeCompact"
+		busyIndicatorDelay="0" contentWidth="{= ${device>/system/phone} ? 'auto' : '25rem'}">
+		<VBox class="spgLabOrdGridBorder sapUiSmallMarginBeginEnd spgLabOrdP5">
+			<Text wrapping="true" text="{i18n>toolStatus}" class="spgLabOrdLabel asterisk"/>
+			<custom:ComboBoxExt id="idToolStatusCmbx" placeholder="{i18n>enter} {i18n>toolStatus}" width="100%"
+				selectionChange="onComboBoxSelectionChange"
+				items="{ path: '/MasterListSet', filters: [{path: 'IvFieldGroup', operator: 'EQ', value1: 'ZCITOOL_STS'}]}"
+				valueStateText="{i18n>enterValid} {i18n>toolStatus}">
+				<core:Item key="{GuidKey}" text="{KeyValue1}"/>
+			</custom:ComboBoxExt>
+		</VBox>
+		<l:Grid defaultSpan="L12 M12 S12" class="spgLabOrdGrid">
+			<l:content>
+				<Toolbar class="spgLabOrdTabBar">
+					<Text text="{i18n>laborHeading}" class="spgLabOrdTabTitle"/>
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</Toolbar>
+				<VBox>
+					<Text text="{i18n>startOfWork}" class="spgLabOrdLabel asterisk"/>
+					<!-- Start of PCR035112++ changes -->
+					<!-- <DateTimePicker id="idStartofWork" width="100%" placeholder="{i18n>startOfWorkPlaceholder}"
+						displayFormat="dd-MMM-yyyy HH:mm" valueFormat="yyyy-MM-dd-HH-mm-ss" /> -->
+					<HBox>
+						<DatePicker id="idStartofWork" width="100%" valueStateText="{i18n>enterValid} {i18n>startOfWork}"
+							displayFormat="dd-MMM-yyyy" valueFormat="yyyyMMdd" placeholder="{i18n>startOfWorkPlaceholder}"/>
+						<ComboBox id="idHoursCmbx" class="sapUiTinyMarginBegin"
+							selectionChange="onComboBoxSelectionChange" placeholder="HH"
+							items="{hourMinutes>/Hours}">
+							<core:Item key="{hourMinutes>hour}" text="{hourMinutes>hour}" />
+							<layoutData>
+								<FlexItemData growFactor="1" />
+							</layoutData>
+						</ComboBox>
+						<ComboBox id="idMinCmbx" class="sapUiTinyMarginBegin"
+							selectionChange="onComboBoxSelectionChange" placeholder="MM"
+							items="{hourMinutes>/Minutes}">
+							<core:Item key="{hourMinutes>min}" text="{hourMinutes>min}" />
+							<layoutData>
+								<FlexItemData growFactor="1" />
+							</layoutData>
+						</ComboBox>	
+					</HBox>	
+					<!-- End of PCR035112++ changes -->
+				</VBox>
+				<VBox>
+					<Text text="{i18n>actualDuration} {i18n>hoursLabel}" class="spgLabOrdLabel asterisk"/>
+					<Input id="idActualDuration" liveChange="onActualDurationLiveChange" type="Tel" placeholder="{i18n>actualDurationPlaceholder}" />
+				</VBox>
+				<!-- Start of PCR035112~~ changes -->
+				<!-- <VBox>
+					<Text text="{i18n>measurement}" class="spgLabOrdLabel"/>
+					<TextArea id="idMeasurementTextArea" width="100%" rows="3" placeholder="{i18n>enter} {i18n>measurement}"/>
+				</VBox> -->
+				<!-- End of PCR035112~~ changes -->
+				<VBox>
+					<Text text="{i18n>internalPassdownNotes}" class="spgLabOrdLabel"/>
+					<TextArea id="idIntPassdownTextArea" width="100%" rows="3" placeholder="{i18n>enter} {i18n>internalPassdownNotes}"/>
+				</VBox>
+			</l:content>
+		</l:Grid>
+		<beginButton>
+			<Button text="{i18n>submitButtonText}" type="Accept" press="onSubmitLaborConfirmation"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>cancel}" type="Transparent" press="onDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

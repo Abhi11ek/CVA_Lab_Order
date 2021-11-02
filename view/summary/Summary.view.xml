@@ -1,0 +1,42 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+<mvc:View controllerName="com.amat.spg.labord.controller.summary.Summary" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<IconTabBar id="idSummaryIconTabBar" class="sapUiResponsiveContentPadding" expanded="true" expandable="false"
+		select="onSelectSummaryIconTabBar" selectedKey="{summaryView>/sIconTabSelKey}">
+		<items>
+			<IconTabFilter id="idDetailsTab" icon="sap-icon://form" tooltip="{i18n>detailsIconTabFilterText}" text="{i18n>detailsIconTabFilterText}"
+				key="Details">
+				<l:VerticalLayout id="idWorkOrderDetailLayout" width="100%"/>
+				<l:VerticalLayout width="100%">
+					<l:content>
+						<core:Fragment fragmentName="com.amat.spg.labord.fragments.summary.PretaskChecklist" type="XML"/>
+					</l:content>
+				</l:VerticalLayout>
+			</IconTabFilter>
+			<IconTabFilter id="idWorkInstructionsTab" icon="sap-icon://technical-object" tooltip="{i18n>workInsIconTabFilterText}"
+				text="{i18n>workInsIconTabFilterText}" key="WorkInstructions" visible="false">
+				<!--View is loaded dynamically-->
+			</IconTabFilter>
+			<IconTabFilter id="idPartsRequiredTab" icon="sap-icon://settings" tooltip="{i18n>partsRequiredIconTabFilterText}"
+				text="{i18n>partsRequiredIconTabFilterText}" key="PartsRequired">
+				<!--View is loaded dynamically-->
+			</IconTabFilter>
+			<IconTabFilter id="idAssignmentTab" icon="sap-icon://activity-assigned-to-goal" tooltip="{i18n>assignmentIconTabFilterText}"
+				text="{i18n>assignmentIconTabFilterText}" key="Assignment">
+				<!--View is loaded dynamically-->
+			</IconTabFilter>
+			<IconTabFilter id="idAttachmentsTab" icon="sap-icon://attachment" tooltip="{i18n>attachmentsIconTabFilterText}"
+				text="{i18n>attachmentsIconTabFilterText}" key="Attachments">
+				<!--View is loaded dynamically-->
+			</IconTabFilter>
+			<IconTabFilter id="idPassdownTab" icon="sap-icon://visits" tooltip="{i18n>passdownLogIconTabFilterText}"
+				text="{i18n>passdownLogIconTabFilterText}" key="PassdownLog">
+				<!--View is loaded dynamically-->
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</mvc:View>

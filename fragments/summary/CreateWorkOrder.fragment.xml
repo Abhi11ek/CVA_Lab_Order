@@ -1,0 +1,206 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 10/12/2020  	Vimal Pandu			PCR032047    Phase - 2 changes					*
+ * 02/10/2021  	Vimal Pandu			PCR033603    Chamber List changes				*
+ * 03/11/2021   Vimal Pandu			PCR033677	 Phase - 3 changes 					*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:custom="com.amat.spg.labord.extensions" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<VBox width="100%">
+		<l:Grid defaultSpan="{labOrd>/GridDefaultSpan}" class="spgLabOrdGridBorder" id="idToolInformationGrid">
+			<l:content>
+				<Toolbar class="spgLabOrdTabBar">
+					<Text text="{i18n>toolInfo}" class="spgLabOrdTabTitle"/>
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</Toolbar>
+				<!--Start of PCR032047++ changes-->
+				<VBox>
+					<Text text="{i18n>pbgLabel}" wrapping="true" class="spgLabOrdLabel asterisk"/>
+					<custom:ComboBoxExt id="idPbgCmbx" placeholder="{i18n>enter} {i18n>pbgLabel}" width="100%" busyIndicatorDelay="0"
+						items="{ path: 'labOrd>/aPbg' }" selectionChange="onPbgSelectionChange" valueStateText="{i18n>enterValid} {i18n>pbgLabel}"
+						busy="{labOrd>/bToolElemBusy}">
+						<core:Item key="{labOrd>Pbg}" text="{labOrd>Pbg}"/>
+					</custom:ComboBoxExt>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>toolName}" wrapping="true" class="spgLabOrdLabel asterisk"/>
+					<SearchField id="idToolNameCmbx" placeholder="{i18n>enter} {i18n>toolName}" enableSuggestions="true" search="onSearchToolName"
+						suggest="onSuggestToolName" suggestionItems="{labOrd>/aToolName}" busyIndicatorDelay="0"
+						busy="{labOrd>/bToolElemBusy}" class="spgLabOrdSearchField">
+						<suggestionItems>
+							<SuggestionItem text="{labOrd>ToolDesc}" description=" - {labOrd>ToolId}" key="{labOrd>ToolId}"/>
+						</suggestionItems>
+					</SearchField>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>serialNo}" wrapping="true" class="spgLabOrdLabel"/>
+					<Input id="idSerialNumberInp" enabled="false" placeholder="{i18n>enter} {i18n>serialNo}" width="100%" busyIndicatorDelay="0"
+						busy="{labOrd>/bToolElemBusy}" submit="onInputChangeFetchToolData" liveChange="onToolIdLiveChange"
+						valueStateText="{i18n>enterValid} {i18n>serialNo}" suggestionItems="{/ToolIdMasterSet}">
+						<suggestionItems>
+							<core:Item text="{serialNo}"/>
+						</suggestionItems>
+					</Input>
+				</VBox>
+				<!--<VBox>
+					<Text text="{i18n>serialNo}" wrapping="true" class="spgLabOrdLabel asterisk"/>
+					<Input id="idSerialNumberInp" placeholder="{i18n>enter} {i18n>serialNo}" width="100%"
+						maxLength="{= parseInt(${/#WorkOrder/Serialnumber/@maxLength}, 10)}" submit="onInputChangeFetchToolData" liveChange="onToolIdLiveChange"
+						valueStateText="{i18n>enterValid} {i18n>serialNo}" suggestionItems="{/ToolIdMasterSet}">
+						<suggestionItems>
+							<core:Item text="{serialNo}"/>
+						</suggestionItems>
+					</Input>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>toolName}" wrapping="true" class="spgLabOrdLabel"/>
+					<Input value="{labOrd>/oToolId/Equipmentdescription}" enabled="false"/>
+				</VBox>-->
+				<!--End of PCR032047~~ changes-->
+				<VBox>
+					<Text text="{i18n>primaryToolManager}" wrapping="true" class="spgLabOrdLabel"/>
+					<Input value="{labOrd>/oToolId/ToolManagerName}" enabled="false"/>
+				</VBox>
+				<!--Start of PCR032047~~ changes-->
+				<!--<VBox>
+					<Text text="{i18n>pbgLabel}" wrapping="true" class="spgLabOrdLabel"/>
+					<Input value="{labOrd>/oToolId/Pbg}" enabled="false"/>
+				</VBox>-->
+				<!--End of PCR032047~~ changes--> 
+				<VBox>
+					<Text wrapping="true" text="{i18n>chamberType}" class="spgLabOrdLabel asterisk"/>
+					<!--PCR033677++; added , filters: [{path: 'IvFieldGroup', operator: 'EQ', value1: 'ASSEMBLY'}] to items aggregation-->
+					<!--PCR032047~~; removed , filters: [{path: 'IvFieldGroup', operator: 'EQ', value1: 'ASSEMBLY'}] from items aggregation-->
+					<custom:ComboBoxExt id="idChamberTypeCmbx" placeholder="{i18n>enter} {i18n>chamberType}" width="100%"
+						selectionChange="onComboBoxSelectionChange"
+						items="{ path: '/ChamberListSet', filters: [{path: 'IvFieldGroup', operator: 'EQ', value1: 'ASSEMBLY'}]}" valueStateText="{i18n>enterValid} {i18n>chamberType}">
+						<!--Start of PCR033603++ changes-->
+						<!--Start of PCR032047++ changes-->
+						<!--<core:Item key="{GuidKey}" text="{GuidKey}"/>-->
+						<!-- <core:Item key="{AssemblyDesc}" text="{AssemblyDesc}"/> -->
+						<!--End of PCR032047++ changes-->
+						<core:Item key="{GuidKey}" text="{GuidKey}"/>
+						<!--End of PCR033603++ changes-->
+					</custom:ComboBoxExt>
+				</VBox>
+				<VBox>
+					<Text wrapping="true" text="{i18n>toolStatus}" class="spgLabOrdLabel"/>
+					<custom:ComboBoxExt id="idToolStatusCmbx" placeholder="{i18n>enter} {i18n>toolStatus}" width="100%"
+						selectionChange="onComboBoxSelectionChange"
+						items="{ path: '/MasterListSet', filters: [{path: 'IvFieldGroup', operator: 'EQ', value1: 'ZCITOOL_STS'}]}"
+						valueStateText="{i18n>enterValid} {i18n>toolStatus}">
+						<core:Item key="{GuidKey}" text="{KeyValue1}"/>
+					</custom:ComboBoxExt>
+				</VBox>
+				<!-- Start of PCR033677++ changes -->
+				<VBox>
+					<Text wrapping="true" text="{i18n>buildingNo}" class="spgLabOrdLabel"/>
+					<Text text="{labOrd>/BuildingNo}" class="spgLabOrdText"/>
+				</VBox>
+				<!-- End of PCR033677++ changes -->
+			</l:content>
+		</l:Grid>
+		<l:Grid defaultSpan="{labOrd>/GridDefaultSpan}" class="spgLabOrdGridBorder" id="idWorkDetailsGrid">
+			<l:content>
+				<Toolbar class="spgLabOrdTabBar">
+					<Text text="{i18n>workOrderDetails}" class="spgLabOrdTabTitle"/>
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</Toolbar>
+				<VBox>
+					<Text text="{i18n>requestorName}" wrapping="true" class="spgLabOrdLabel"/>
+					<Input value="{labOrd>/RequestedbyName}" enabled="false"/>
+				</VBox>
+				<VBox>
+					<Text wrapping="true" text="{i18n>category2}" class="spgLabOrdLabel asterisk"/>
+					<!--PCR032047++; changed onCategorySelectionChange to onComboBoxSelectionChange-->
+					<custom:ComboBoxExt id="idCateTwoCmbx" placeholder="{i18n>enter} {i18n>category2}" width="100%" selectionChange="onComboBoxSelectionChange"
+						items="{/CategorySet}" valueStateText="{i18n>enterValid} {i18n>category2}">
+						<core:Item key="{Code}" text="{ShortText}"/>
+					</custom:ComboBoxExt>
+				</VBox>
+				<VBox>
+					<Text wrapping="true" text="{i18n>priority}" class="spgLabOrdLabel"/>
+					<custom:ComboBoxExt id="idPriorityCmbx" placeholder="{i18n>enter} {i18n>priority}" width="100%" selectionChange="onComboBoxSelectionChange"
+						items="{ path: '/PrioritySet' }">
+						<core:Item key="{PriorityKey}" text="{Description}"/>
+					</custom:ComboBoxExt>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>creationDate}" wrapping="true" class="spgLabOrdLabel"/>
+					<DatePicker id="idCreationDate" width="100%" editable="false" valueStateText="{i18n>enterValid} {i18n>creationDate}"
+						displayFormat="dd-MMM-yyyy" valueFormat="dd-MMM-yyyy" placeholder=" "/>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>reqStartDate}" wrapping="true" class="spgLabOrdLabel asterisk"/>
+					<!-- Start of PCR035112++ changes -->
+					<!-- Start of PCR033677++ changes -->
+					<!-- <DatePicker id="idReqStartDate" width="100%" change="onStartDateChange" valueStateText="{i18n>enterValid} {i18n>reqStartDate}"
+						displayFormat="dd-MMM-yyyy" valueFormat="dd-MMM-yyyy" placeholder="Select {i18n>reqStartDate}"/> -->
+					<!-- <DateTimePicker id="idReqStartDate" width="100%" placeholder="Select {i18n>reqStartDate}" valueStateText="{i18n>enterValid} {i18n>reqStartDate}"
+						displayFormat="dd-MMM-yyyy HH:mm" valueFormat="yyyy-MM-dd-HH-mm-ss" /> -->	
+					<!-- End of PCR033677++ changes -->	
+					<HBox>
+						<DatePicker id="idReqStartDate" width="100%" change="onStartDateChange" valueStateText="{i18n>enterValid} {i18n>reqStartDate}"
+							displayFormat="dd-MMM-yyyy" valueFormat="yyyyMMdd" placeholder="Select {i18n>reqStartDate}"/>
+						<ComboBox id="idHoursCmbx" class="sapUiTinyMarginBegin"
+							selectionChange="onComboBoxSelectionChange" placeholder="HH"
+							items="{hourMinutes>/Hours}">
+							<core:Item key="{hourMinutes>hour}" text="{hourMinutes>hour}" />
+							<layoutData>
+								<FlexItemData growFactor="1" />
+							</layoutData>
+						</ComboBox>
+						<ComboBox id="idMinCmbx" class="sapUiTinyMarginBegin"
+							selectionChange="onComboBoxSelectionChange" placeholder="MM"
+							items="{hourMinutes>/Minutes}">
+							<core:Item key="{hourMinutes>min}" text="{hourMinutes>min}" />
+							<layoutData>
+								<FlexItemData growFactor="1" />
+							</layoutData>
+						</ComboBox>	
+					</HBox>
+					<!-- End of PCR035112++ changes -->
+				</VBox>
+				<VBox>
+					<Text text="{i18n>title}" wrapping="true" class="spgLabOrdLabel asterisk"/>
+					<Input id="idTitle" placeholder="{i18n>enter} {i18n>title}" width="100%" valueStateText="{i18n>enterValid} {i18n>title}"
+						liveChange="onElementLiveChange" maxLength="{= parseInt(${/#WorkOrder/Projname/@maxLength}, 10)}"/>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>workDescription}" wrapping="true" class="spgLabOrdLabel asterisk"/>
+					<TextArea id="idWorkDescription" width="100%" placeholder="{i18n>enter} {i18n>workDescription}" liveChange="onElementLiveChange"
+						maxLength="2048" rows="3" valueStateText="{i18n>enterValid} {i18n>workDescription}"/>
+					<layoutData>
+						<l:GridData span="{labOrd>/WorkDescSpan}"/>
+					</layoutData>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>statusLabel}" wrapping="true" class="spgLabOrdLabel asterisk"/>
+					<ComboBox id="idStatusCmbx" placeholder="{i18n>enter} {i18n>statusLabel}" width="100%" selectionChange="onWorkStatusSelectionChange"
+						items="{ path: '/MasterListSet', filters: [{path: 'IvFieldGroup', operator: 'EQ', value1: 'ZBDTEL00007C'}]}">
+						<core:Item key="{GuidKey}" text="{KeyValue1}"/>
+					</ComboBox>
+				</VBox>
+				<VBox id="idReasonBox">
+					<Text text="{i18n>reasonLabel}" wrapping="true" class="spgLabOrdLabel asterisk"/>
+					<!-- PCR035112~~; changed value1 from ZCISPGDELAY TO ZADTEL00003F -->
+					<custom:ComboBoxExt id="idReasonCmbx" placeholder="{i18n>enter} {i18n>reasonLabel}" width="100%" selectionChange="onComboBoxSelectionChange"
+						items="{ path: '/MasterListSet', filters: [{path: 'IvFieldGroup', operator: 'EQ', value1: 'ZADTEL00003F'}]}"
+						valueStateText="{i18n>enterValid} {i18n>reasonLabel}">
+						<core:Item key="{GuidKey}" text="{KeyValue1}"/>
+					</custom:ComboBoxExt>
+					<!-- PCR032047~~
+					<layoutData>
+						<l:GridData span="L8 M6 S6"/>
+					</layoutData> -->
+				</VBox>
+			</l:content>
+		</l:Grid>
+	</VBox>
+</core:FragmentDefinition>

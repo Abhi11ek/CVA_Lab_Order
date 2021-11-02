@@ -1,0 +1,206 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 10/07/2020  	Vimal Pandu			PCR032047    Advance search statuses change		*
+ * 03/11/2021   Vimal Pandu			PCR033677	 Phase - 3 changes 					*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog showHeader="false" afterClose="onDialogClose" stretch="{device>/system/phone}" class="sapUiSizeCompact" busyIndicatorDelay="0"
+		contentWidth="{= ${device>/system/phone} ? 'auto' : '25rem'}" contentHeight="{= ${device>/system/phone} ? 'auto' : '36rem'}">
+		<NavContainer id="idAdvanceSearchNavCon" initialPage="idAdvanceSearchPage">
+			<Page id="idAdvanceSearchPage" title="{i18n>advSearch}" class="spgLabOrdB1">
+				<customHeader>
+					<Bar>
+						<contentLeft>
+							<Text text="{i18n>advSearch}" class="sapUiTinyMarginBegin"/>
+						</contentLeft>
+						<contentRight>
+							<Button type="Transparent" text="{i18n>resetButtonText}" press="onPressResetAdvanceSearchFields"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<!-- Start of PCR032047++ changes -->
+				<subHeader>
+					<Bar>
+						<contentLeft>
+						<SegmentedButton id="idAdvSrvSegBtn" selectedKey="{workOrdersView>/sSegBtnSelKey}" select="onAdvSrchSegBtnSelectionChange"
+							class="spgLabOrdAdvSrhSegBtn">
+							<items>
+								<SegmentedButtonItem icon="sap-icon://history" key="History" tooltip="{i18n>recentSearchesTooltip}"/>
+								<SegmentedButtonItem icon="sap-icon://save" key="Save"  tooltip="{i18n>savedSearchesTooltip}"/>
+							</items>
+						</SegmentedButton>
+						</contentLeft>
+					</Bar>
+				</subHeader>
+				<!-- End of PCR032047++ changes -->
+				<content>
+					<VBox class="spgLabOrdAdvSrhBox spgLabOrdP1">
+						<VBox>
+							<Label text="{i18n>serialNo}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#WorkOrder/IvSerialNumber/@maxLength}, 10)}" value="{workOrdersView>/IvSerialNumber}"
+								placeholder="{i18n>enter} {i18n>serialNo}" submit="handleAdvanceSearch"/>
+						</VBox>
+						<!-- Start of PCR033677++ changes -->
+						<VBox>
+							<Label text="{i18n>toolName}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#WorkOrder/ToolName/@maxLength}, 10)}" value="{workOrdersView>/ToolName}" busy="{workOrdersView>/bTitleBusy}" showSuggestion="true" suggestionItems="{sugItems>/}"
+								placeholder="{i18n>enter} {i18n>toolName}" submit="handleAdvanceSearch">
+								<suggestionItems>
+									<core:Item text="{sugItems>ToolDesc}" key="{sugItems>ToolDesc}"/>
+								</suggestionItems>
+							</Input>
+						</VBox>
+						<!-- End of PCR033677++ changes -->
+						<VBox>
+							<Label text="{i18n>title}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#WorkOrder/IvPrjname/@maxLength}, 10)}" value="{workOrdersView>/IvPrjname}" 
+								placeholder="{i18n>enter} {i18n>title}" submit="handleAdvanceSearch" />
+						</VBox>
+						<VBox>
+							<Label text="{i18n>workOrder}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#WorkOrder/IvServiceCaseNo/@maxLength}, 10)}" value="{workOrdersView>/IvServiceCaseNo}"
+								liveChange="hORleNumberInputValue" placeholder="{i18n>enter} {i18n>workOrder}" submit="handleAdvanceSearch"/>
+						</VBox>
+						<VBox>
+							<Label text="{i18n>category2}" class="spgLabOrdLabel"/>
+							<!--PCR032047++; added id-->
+							<ComboBox id="idAdvCategory" items="{path: '/CategorySet'}" placeholder="{i18n>enter} {i18n>category2}" width="100%" selectedKey="{workOrdersView>/IvCategory}">
+								<items>
+									<core:Item key="{Code}" text="{ShortText}"/>
+								</items>
+							</ComboBox>
+						</VBox>
+						<VBox>
+							<Label text="{i18n>status}" class="spgLabOrdLabel"/>
+							<MultiComboBox id="idAdvSrhStatus" placeholder="{i18n>enter} {i18n>status}">
+								<items>
+									<!-- Start of PCR035112++ changes -->
+									<core:ListItem key="E0011" text="{i18n>submittedStatusText}"/>
+									<core:ListItem key="E0001$E0002" text="{i18n>approvedStatusText}"/>
+									<core:ListItem key="E0012" text="{i18n>rejectedStatusText}"/>
+									<core:ListItem key="SCHDL" text="{i18n>scheduledStatusText}"/>
+									<!-- End of PCR035112++ changes -->
+									<!-- Start of PCR032047~~ changes -->
+									<!--<core:ListItem key="E0001" text="{i18n>openStatusText}"/>-->
+									<!--<core:ListItem key="E0002" text="{i18n>releasedStatusText}"/>-->
+									<!-- PCR035112~~; changing Key E0001$E0002 to INPRO -->
+									<core:ListItem key="INPRO" text="{i18n>inProgressText}"/>
+									<!-- End of PCR032047~~ changes -->
+									<core:ListItem key="E0005" text="{i18n>workCompletedStatusText}"/>
+									<core:ListItem key="E0006" text="{i18n>cancelledStatusText}"/>
+									<!--PCR032047~~--><!--<core:ListItem key="E0004" text="{i18n>closedStatusText}"/>-->
+									<!--PCR033677++--><core:ListItem key="E0004" text="{i18n>closedStatusText}"/>
+								</items>
+							</MultiComboBox>
+						</VBox>
+						<VBox>
+							<Label text="{i18n>createdBy}" class="spgLabOrdLabel"/>
+							<Input id="idAdvCreatedByInp" placeholder="{i18n>enterEmpID}" valueHelpRequest="onPressEmpIdValueHelp" valueHelpOnly="true"
+								showValueHelp="true" submit="handleAdvanceSearch"/>
+						</VBox>
+					</VBox>
+				</content>
+				<footer>
+					<Toolbar>
+						<!--PCR032047++; added button -->
+						<Button text="{i18n>saveButtonText}" busyIndicatorDelay="0" busy="{labOrd>/bSaveBtnBusy}" type="Transparent" press="onSaveVariants" class="sapUiTinyMarginBegin"/>
+						<ToolbarSpacer/>
+						<Button text="{i18n>search}" type="Accept" press="handleAdvanceSearch"/>
+						<Button text="{i18n>cancel}" type="Transparent" press="onDialogClose">
+							<customData>
+								<core:CustomData key="advSearchCancel" value="button"/>
+							</customData>
+						</Button>
+					</Toolbar>
+				</footer>
+			</Page>
+			<Page id="idAssignedToPage" title="{i18n>userDetails}" showNavButton="true" navButtonPress="onUserDetailsNavBack" class="spgLabOrdB1">
+				<content>
+					<VBox class="spgLabOrdAdvSrhBox spgLabOrdP1">
+						<VBox>
+							<Label text="{i18n>firstName}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#Employee/Firstname/@maxLength}, 10)}" value="{workOrdersView>/Firstname}"
+								placeholder="{i18n>enter} {i18n>firstName}" submit="onPressEmpListSearch"/>
+						</VBox>
+						<VBox>
+							<Label text="{i18n>lastName}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#Employee/Lastname/@maxLength}, 10)}" value="{workOrdersView>/Lastname}"
+								placeholder="{i18n>enter} {i18n>lastName}" submit="onPressEmpListSearch"/>
+						</VBox>
+						<VBox>
+							<Label text="{i18n>userId}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#Employee/Userid/@maxLength}, 10)}" value="{workOrdersView>/Userid}"
+								placeholder="{i18n>enter} {i18n>userId}" submit="onPressEmpListSearch"/>
+						</VBox>
+					</VBox>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="{i18n>search}" type="Accept" press="onPressEmpListSearch"/>
+						<Button text="{i18n>cancel}" type="Transparent" press="onDialogClose">
+							<customData>
+								<core:CustomData key="advSearchCancel" value="button"/>
+							</customData>
+						</Button>
+					</Toolbar>
+				</footer>
+			</Page>
+			<Page id="idAssignedToResults" showNavButton="false" class="spgLabOrdB1">
+				<customHeader>
+					<Bar>
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" press="onUserDetailsNavBack"/>
+						</contentLeft>
+						<contentMiddle>
+							<Text text="{i18n>userDetails}"/>
+						</contentMiddle>
+						<contentRight>
+							<Button icon="sap-icon://sort" press="onPressEmpListSort" visible="false"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<MessageStrip visible="{workOrdersView>/bShowMsgStrip}" text="{i18n>clickUserID}" type="Information" showIcon="true" class="sapUiTinyMargin"/>
+					<HBox class="spgCrtWhiteBackground" justifyContent="Center" alignItems="Start">
+						<Table mode="SingleSelectMaster" items="{ path: '/EmployeeSet' }" id="idEmployeeListTable" busyIndicatorDelay="0" growing="true"
+							growingThreshold="500" growingScrollToLoad="true">
+							<columns>
+								<Column>
+									<Label text="{i18n>firstName}"/>
+								</Column>
+								<Column>
+									<Label text="{i18n>lastName}"/>
+								</Column>
+								<Column>
+									<Label text="{i18n>userId}"/>
+								</Column>
+							</columns>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Firstname}"/>
+									<Text text="{Lastname}"/>
+									<Text text="{Userid}"/>
+								</cells>
+							</ColumnListItem>
+						</Table>
+					</HBox>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="{i18n>ok}" type="Accept" press="onSelectEmpItem"/>
+						<Button text="{i18n>cancel}" type="Transparent" press="onDialogClose">
+							<customData>
+								<core:CustomData key="advSearchCancel" value="button"/>
+							</customData>
+						</Button>
+					</Toolbar>
+				</footer>
+			</Page>
+		</NavContainer>
+	</Dialog>
+</core:FragmentDefinition>

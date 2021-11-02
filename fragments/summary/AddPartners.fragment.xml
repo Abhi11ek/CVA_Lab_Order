@@ -1,0 +1,87 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog showHeader="false" afterClose="onDialogClose" stretch="{device>/system/phone}" class="sapUiSizeCompact" busyIndicatorDelay="0"
+		contentWidth="{= ${device>/system/phone} ? 'auto' : '25rem'}" contentHeight="{= ${device>/system/phone} ? 'auto' : '25rem'}">
+		<NavContainer id="idPartnersNavCon" initialPage="idAssignedToPage">
+			<Page id="idAssignedToPage" title="{i18n>userDetails}" showNavButton="false" class="spgLabOrdB1">
+				<content>
+					<VBox class="spgLabOrdAdvSrhBox spgLabOrdP1">
+						<VBox>
+							<Label text="{i18n>firstName}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#Employee/Firstname/@maxLength}, 10)}" value="{assignmentView>/Firstname}" placeholder="{i18n>enter} {i18n>firstName}" submit="onPressEmpListSearch"/>
+						</VBox>
+						<VBox>
+							<Label text="{i18n>lastName}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#Employee/Lastname/@maxLength}, 10)}" value="{assignmentView>/Lastname}" placeholder="{i18n>enter} {i18n>lastName}" submit="onPressEmpListSearch"/>
+						</VBox>
+						<VBox>
+							<Label text="{i18n>userId}" class="spgLabOrdLabel"/>
+							<Input maxLength="{= parseInt(${/#Employee/Userid/@maxLength}, 10)}" value="{assignmentView>/Userid}" placeholder="{i18n>enter} {i18n>userId}" submit="onPressEmpListSearch"/>
+						</VBox>
+					</VBox>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="{i18n>search}" type="Accept" press="onPressEmpListSearch"/>
+						<Button text="{i18n>cancel}" type="Transparent" press="onDialogClose">
+							<customData>
+								<core:CustomData key="advSearchCancel" value="button"/>
+							</customData>
+						</Button>
+					</Toolbar>
+				</footer>
+			</Page>
+			<Page id="idAssignedToResults" showNavButton="false" class="spgLabOrdB1">
+				<customHeader>
+					<Bar>
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" press="onUserDetailsNavBack"/>
+						</contentLeft>
+						<contentMiddle>
+							<Text text="{i18n>userDetails}"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<MessageStrip visible="{assignmentView>/bShowMsgStrip}" text="{i18n>clickUserID}" type="Information" showIcon="true" class="sapUiTinyMargin"></MessageStrip>
+					<HBox class="spgCrtWhiteBackground" justifyContent="Center" alignItems="Start">
+						<Table mode="SingleSelectMaster" items="{ path: '/EmployeeSet' }" id="idEmployeeListTable" busyIndicatorDelay="0"
+							growing="true" growingThreshold="500" growingScrollToLoad="true">
+							<columns>
+								<Column>
+									<Label text="{i18n>firstName}"/>
+								</Column>
+								<Column>
+									<Label text="{i18n>lastName}"/>
+								</Column>
+								<Column>
+									<Label text="{i18n>userId}"/>
+								</Column>
+							</columns>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Firstname}"/>
+									<Text text="{Lastname}"/>
+									<Text text="{Userid}"/>
+								</cells>
+							</ColumnListItem>
+						</Table>
+					</HBox>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="{i18n>ok}" type="Accept" press="onSelectEmpItem"/>
+						<Button text="{i18n>cancel}" type="Transparent" press="onDialogClose"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</NavContainer>
+	</Dialog>
+</core:FragmentDefinition>

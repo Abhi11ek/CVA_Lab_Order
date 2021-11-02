@@ -1,0 +1,83 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 03/11/2021   Vimal Pandu			PCR033677	 Phase - 3 changes 					*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+<mvc:View controllerName="com.amat.spg.labord.controller.confirmation.LaborConfirmation" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<VBox class="spgLabOrdP2 spgLabOrdM1">
+		<OverflowToolbar class="spgLabOrdTabBar" height="2.25rem">
+			<VBox id="idLaborItemBox" items="{path: 'ToLabour'}">
+				<Text wrapping="true"
+					text="{i18n>totalHoursSpent}: {path: 'ActualDuration', formatter: '.formatter.formatDuration'} {i18n>totalHoursSpentUoM}"
+					class="spgLabOrdTabTitle" visible="{= ${LaborId} === 'A7380' &amp;&amp; ${ItemNumber} === '10'}"/>
+			</VBox>
+			<ToolbarSpacer/>
+			<!-- PCR035112~~; visible="{labOrd>/bModifyWO}" to visible="{labOrd>/bShowConfBtn}" -->
+			<Button type="Accept" icon="sap-icon://add" text="{i18n>addLaborButtonText}" press="onPressAddLaborConfirmation"
+				visible="{labOrd>/bShowConfBtn}"/>
+		</OverflowToolbar>
+		<ScrollContainer id="idLaborConfirmScrollCont" class="spgLabOrdConfListScrollCont">
+			<List id="idLaborConfirmationList" inset="false"
+				items="{path: 'ToLabourConfirmations', filters: [{path: 'IvItemNo', operator: 'EQ', value1: '10'}]}" noDataText="{laborView>/noDataText}"
+				mode="None" growing="false">
+				<items>
+					<CustomListItem type="Inactive" class="spgLabOrdConfListContent">
+						<FlexBox direction="{= ${device>/system/phone} ? 'Column' : 'Row'}" width="100%" alignItems="End" justifyContent="End">
+							<l:Grid defaultSpan="L4 M4 S6" class="spgLabOrdGrid">
+								<l:content>
+									<VBox>
+										<Text text="{i18n>confirmationId}" class="spgLabOrdLabel"/>
+										<Text text="{Confirmationnumber}" class="spgLabOrdText"/>
+									</VBox>
+									<VBox>
+										<Text text="{i18n>startOfWork}" class="spgLabOrdLabel"/>
+										<!-- PCR033677++; {i18n>pstTimeZone} -->
+										<Text text="{path: 'SrvcActual', formatter : '.formatter.dateFormat'} {path: 'SrvcActual', formatter : '.formatter.formatTime'} {i18n>pstTimeZone}"
+											class="spgLabOrdText"/>
+									</VBox>
+									<VBox>
+										<Text text="{i18n>created}" class="spgLabOrdLabel"/>
+										<!-- Start of PCR033677++ changes -->
+										<Text text="{ExecutiveSrvEmp}" class="spgLabOrdText"/>
+										<!-- <Text
+											text="{ExecutiveSrvEmp} {path: 'CreatedAt', formatter : '.formatter.dateFormat'} {path: 'CreatedAt', formatter : '.formatter.formatTime'}  {i18n>pstTimeZone}"
+											class="spgLabOrdText"/> -->
+										<!-- End of PCR033677++ changes -->	
+									</VBox>
+									<VBox>
+										<Text text="{i18n>actualDuration} {i18n>hoursLabel}" class="spgLabOrdLabel"/>
+										<Text text="{path: 'ConfirmedQty', formatter: '.formatter.formatDuration'}" class="spgLabOrdText"/>
+									</VBox>
+									<!-- Start of PCR035112++ changes
+									<VBox>
+										<Text text="{i18n>measurement}" class="spgLabOrdLabel"/>
+										<FormattedText htmlText="{MeasurementNote}" class="spgLabOrdText"/>
+										<layoutData>
+											<l:GridData span="L4 M4 S12"/>
+										</layoutData>
+									</VBox> 
+									End of PCR035112++ changes -->
+									<VBox>
+										<Text text="{i18n>internalPassdownNotes}" class="spgLabOrdLabel"/>
+										<FormattedText htmlText="{InternalNote}" class="spgLabOrdText"/>
+										<layoutData>
+											<l:GridData span="L4 M4 S12"/>
+										</layoutData>
+									</VBox>
+								</l:content>
+							</l:Grid>
+							<HBox class="spgLabOrdP1" width="{= ${device>/system/phone} ? '100%' : '15%'}" justifyContent="End">
+								<Button text="{i18n>cancel}" type="Reject" press="onPressCancelConfirmationDocument"
+									visible="{= ${labOrd>/bModifyWO} &amp;&amp; ${Status} !== 'Cancelled'}" class="spgLabOrdConfDocxCancel"/>
+								<FormattedText htmlText="{ path: 'Status', formatter: '.formatter.formatConfDocxStatus' }" visible="{= ${Status} === 'Cancelled'}"/>
+							</HBox>
+						</FlexBox>
+					</CustomListItem>
+				</items>
+			</List>
+		</ScrollContainer>
+	</VBox>
+</mvc:View>

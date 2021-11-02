@@ -1,0 +1,249 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 10/12/2020  	Vimal Pandu			PCR032047    Phase - 2 changes					*
+ * 02/01/2021   Vimal Pandu			PCR033603	 Completion Date changes 			*
+ * 02/26/2021   Vimal Pandu			PCR033677	 Phase - 3 changes 					*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+<mvc:View controllerName="com.amat.spg.labord.controller.WorkOrders" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:l="sap.ui.layout">
+	<!--PCR032047++; added showFooter-->
+	<Page id="idWorkOrdersPage" showFooter="false">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" press="onNavBack" type="Transparent"/>
+					<Text text="{i18n>workOrdersTitle}" class="spgLabOrdPageTitle"/>
+					<Text text="{workOrdersView>/title}" class="spgLabOrdPageTitle"/>
+				</contentLeft>
+				<contentRight>
+					<Button icon="sap-icon://add" press="onCreateWorkOrder" text="{i18n>createWOButtonText}" type="Accept" busyIndicatorDelay="0"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<subHeader>
+			<Bar id="headerBar">
+				<contentMiddle>
+					<!--Start of PCR032047++ changes-->
+					<!--<SearchField id="searchField" showRefreshButton="{= !${device>/support/touch}}" placeholder="{i18n>workOrdersSearchTooltip}" width="100%"
+							search="onSearch"></SearchField>-->
+					<HBox class="spgLabOrdSFBox">
+						<SearchField id="searchField" showRefreshButton="{= !${device>/support/touch}}" placeholder="{i18n>workOrdersSearchTooltip}"
+							class="spgLabOrdMstSearchField" search="onSearch"/>
+						<HBox width="{= ${device>/system/phone} ? 'auto' : '100%'}" justifyContent="End">
+							<Button type="Transparent" tooltip="{i18n>advSearch}" icon="sap-icon://inspection" press="onPressAdvancedSearch" class="spgLabOrdMstBtn"/>
+							<Button icon="sap-icon://sort" type="Transparent" press="onPressSortWorkOrders" class="spgLabOrdMstBtn"/>
+							<Button icon="sap-icon://download" type="Transparent" press="onPressDownloadWorkOrders" class="spgLabOrdMstBtn"/>
+						</HBox>
+					</HBox>
+					<!--End of PCR032047++ changes-->
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<!--PCR032047++ added visible property-->
+			<!--Start of PCR033677++ changes-->
+			<HBox class="spgLabOrdMstListHdrBox spgLabOrdMstListExpHdrBox1" visible="{= ${labOrd>/bShowDetailContentBtn}}">
+				<Text text="{i18n>workOrderId}" class="sapLabOrdMstListText spgLabOrdHdrLbl"/>
+				<!--Start of PCR032047++ changes-->
+				<Text text="{i18n>toolName}" class="sapLabOrdMstListText spgLabOrdHdrLbl"/>
+				<!--<Text text="{i18n>toolId}" class="sapLabOrdMstListText"/>-->
+				<!--<Text text="{i18n>statusText}" class="sapLabOrdMstListText"/>-->
+				<!--End of PCR032047++ changes-->
+			</HBox>
+			<!-- End of PCR033677++ changes -->
+			<!--Start of PCR032047++ changes-->
+			<HBox id="idSearchDetailsText" width="100%" class="spgLabOrdSearchDetailsBox" visible="{workOrdersView>/bShowSearchHeader}">
+				<Label width="{= !${labOrd>/bShowDetailContentBtn} ? '100%' : '23.5rem'}" text="{workOrdersView>/bShowSearchText}"
+					class="spgLabOrdSearchDetailsText"/>
+			</HBox>
+			<!--End of PCR032047++ changes-->
+			<!-- PCR032047++; added busyIndicatorDelay -->
+			<!-- PCR033677++; changing growingThreshold="20" to growingThreshold="200"; added horizontal; vertical="false" -->
+			<ScrollContainer id="idWOScrollCont" class="spgLabOrdMstListScrollCont spgLabOrdMstListScrollCont1 spgLabOrdB2" horizontal="true"
+				vertical="false">
+				<!-- Start of PCR033677++ changes -->
+				<HBox class="spgLabOrdMstListExpHdrBox spgLabOrdP2 spgLabOrdMstListExpHdrBox1" visible="{= !${labOrd>/bShowDetailContentBtn}}"
+					width="168rem">
+					<Text wrapping="true" text="{i18n>workOrderId}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>toolName}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>chamberType}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>title}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<!-- PCR035112++ -->
+					<Text wrapping="true" text="{i18n>workDescription}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>reqStartDate}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>creationDate}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>completionDate}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>woPhase}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>statusLabel}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>toolId}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>priority}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>pbgLabel}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>category2}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>stagingRequired}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>stagingRequest}#" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<Text wrapping="true" text="{i18n>serviceTechnicians}" class="spgLabOrdHdrLbl spgLabOrdP6"/>
+					<VBox width="2.5rem"/>
+				</HBox>
+				<!-- End of PCR033677++ changes -->
+				<!-- PCR033677++; added scroll controller -->
+				<ScrollContainer id="idWOListScrollCont" class="spgLabOrdMstListScrollCont spgLabOrdB2 "
+					width="{= ${labOrd>/bShowDetailContentBtn} ? '100%' : '168rem'}" horizontal="false" vertical="false">
+					<!-- PCR033677++; added updateFinished -->
+					<List id="idWOTable" inset="false" items="{/WorkOrderSet}" noDataText="{workOrdersView>/noDataText}" busyIndicatorDelay="0"
+						mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingThreshold="200" growingScrollToLoad="true"
+						selectionChange="onSelectionChange" width="{= ${labOrd>/bShowDetailContentBtn} ? '100%' : '168rem'}"
+						updateFinished="onWorkOrdersListUpdateFinished">
+						<items>
+							<CustomListItem press="onSelectionChange" type="Navigation" class="spgLabOrdTblRow">
+								<!--Start of PCR032047++ changes-->
+								<VBox class="spgLabOrdMstListBox" visible="{= ${labOrd>/bShowDetailContentBtn}}">
+									<!-- Start of PCR033677++ changes -->
+									<HBox>
+										<Text wrapping="true" text="{Servicecasenumber}" class="sapLabOrdMstListText"/>
+										<Text wrapping="true" text="{Equipmentdescription}" class="sapLabOrdMstListText"/>
+									</HBox>
+									<!-- End of PCR033677++ changes -->
+									<HBox>
+										<VBox width="50%">
+											<Text wrapping="true" text="{i18n>title}" class="spgLabOrdLabel"/>
+											<Text wrapping="true" text="{Projname}" class="spgLabOrdText spgLabOrdNoWrapText"/>
+										</VBox>
+										<VBox width="50%">
+											<Text wrapping="true" text="{i18n>serviceTechnicians}" class="spgLabOrdLabel"/>
+											<Text wrapping="false" text="{ServiceTechs}" class="sapLabOrdMstListText"/>
+										</VBox>
+									</HBox>
+									<HBox>
+										<VBox>
+											<Text wrapping="true" text="{i18n>reqStartDate}" class="spgLabOrdLabel"/>
+											<Text wrapping="true" text="{path: 'Startdatetime', formatter : '.formatter.dateFormat'}" class="spgLabOrdText"/>
+										</VBox>
+										<VBox>
+											<!-- PCR035112~~; changed Orderstatus to OrderStatusTxt -->
+											<FormattedText htmlText="{ path: 'OrderStatusTxt', formatter: '.formatter.formatOrderStatus' }"/>
+										</VBox>
+									</HBox>
+								</VBox>
+								<!-- Start of PCR033677++ changes -->
+								<HBox class="spgLabOrdMstListItemHBox1" visible="{= !${labOrd>/bShowDetailContentBtn}}">
+									<Text wrapping="true" text="{Servicecasenumber}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true" text="{Equipmentdescription}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true" text="{Assembly}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true" text="{Projname}" class="sapLabOrdMstListText"/>
+									<!-- PCR035112++ -->
+									<Text wrapping="false" text="{path:'Problemdescription', formatter: '.formatter.formatWorkDescription'}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true"
+										text="{path: 'Startdatetime', formatter : '.formatter.dateFormat'} {path: 'Startdatetime', formatter: '.formatter.formatTime'}"
+										class="spgLabOrdText"/>
+									<Text wrapping="true"
+										text="{path: 'CreatedDateTimeStr', formatter : '.formatter.dateFormat'} {path: 'CreatedDateTimeStr', formatter: '.formatter.formatTime'}"
+										class="spgLabOrdText"/>
+									<Text
+										text="{path: 'CompletionDateTime', formatter : '.formatter.dateFormat'} {path: 'CompletionDateTime', formatter: '.formatter.formatTime'}"
+										class="spgLabOrdText"/>
+									<!-- PCR035112~~; changed Orderstatus to OrderStatusTxt -->	
+									<FormattedText htmlText="{ path: 'OrderStatusTxt', formatter: '.formatter.formatOrderStatus' }"/>
+									<ObjectStatus text="{WorkStatus}" state="{= ${WorkStatus} === 'DELAYED' ? 'Error' : 'Success'}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true" text="{Serialnumber}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true" text="{Prioritydesc}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true" text="{Pbg}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true" text="{Category2Desc}" class="sapLabOrdMstListText"/>
+									<Switch state="{= ${StagingNo}.length &gt; 0}" enabled="false" customTextOn="Yes" customTextOff="No" class="sapUiSmallMarginEnd">
+										<layoutData>
+											<FlexItemData growFactor="1" />
+										</layoutData>
+									</Switch>
+									<Text wrapping="true" text="{StagingNo}" class="sapLabOrdMstListText"/>
+									<Text wrapping="true" text="{ServiceTechs}" class="sapLabOrdMstListText"/>
+								</HBox>
+								<!-- <HBox class="spgLabOrdMstListItemHBox" visible="{= !${labOrd>/bShowDetailContentBtn}}">
+								<VBox>
+									<Text wrapping="true" text="{i18n>workOrderId}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{Servicecasenumber}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>toolName}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{Equipmentdescription}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>chamberType}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{Assembly}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>title}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{Projname}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>reqStartDate}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{path: 'Startdatetime', formatter : '.formatter.dateFormat'}" class="spgLabOrdText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>creationDate}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{path: 'CreationDatetime', formatter : '.formatter.dateFormat'}" class="spgLabOrdText"/>
+								</VBox>
+								Start of PCR033603++ changes
+								<VBox>
+									<Text text="{i18n>completionDate}" wrapping="true" class="spgLabOrdLabel"/>
+									<Text text="{path: 'CompletionDateTime', formatter : '.formatter.dateFormat'}"  class="spgLabOrdText"/>
+								</VBox>
+								End of PCR033603++ changes
+							</HBox>
+							<HBox class="spgLabOrdMstListItemHBox1" visible="{= !${labOrd>/bShowDetailContentBtn}}">
+								<VBox>
+									<Text wrapping="true" text="{i18n>woPhase}" class="spgLabOrdLabel spgLabOrdP6" />
+									<FormattedText htmlText="{ path: 'Orderstatus', formatter: '.formatter.formatOrderStatus' }"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>statusLabel}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<ObjectStatus text="{WorkStatus}" state="{= ${WorkStatus} === 'DELAYED' ? 'Error' : 'Success'}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>toolId}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{Serialnumber}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>priority}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{Prioritydesc}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>pbgLabel}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{Pbg}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>category2}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="true" text="{Category2Desc}" class="sapLabOrdMstListText"/>
+								</VBox>
+								<VBox>
+									<Text wrapping="true" text="{i18n>serviceTechnicians}" class="spgLabOrdLabel spgLabOrdP6"/>
+									<Text wrapping="false" text="{ServiceTechs}" class="sapLabOrdMstListText"/>
+								</VBox>
+							</HBox> -->
+								<!--<HBox class="spgLabOrdMstListBox">
+								<Text text="{Servicecasenumber}" class="sapLabOrdMstListText"/>
+								<Text text="{Serialnumber}" class="sapLabOrdMstListText"/>
+								<FormattedText htmlText="{ path: 'Orderstatus', formatter: '.formatter.formatOrderStatus' }"/>
+							</HBox>
+							<ObjectIdentifier title="Title" text="{Projname}" class="spgLabOrdMstTitle"/>-->
+								<!--End of PCR032047++ changes-->
+								<!-- End of PCR033677++ changes -->
+							</CustomListItem>
+						</items>
+					</List>
+				</ScrollContainer>
+				<!-- PCR033677++ -->
+			</ScrollContainer>
+		</content>
+		<!--Start of PCR032047~~ changes-->
+		<!--<footer>
+			<Toolbar>
+				<Button type="Transparent" text="{i18n>advSearch}" icon="sap-icon://inspection" press="onPressAdvancedSearch"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://sort" type="Transparent" press="onPressSortWorkOrders"/>
+			</Toolbar>
+		</footer>-->
+		<!--End of PCR032047~~ changes-->
+	</Page>
+</mvc:View>

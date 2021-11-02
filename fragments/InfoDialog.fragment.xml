@@ -1,0 +1,16 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+ 
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog title="{dialog>/dialogDescription/infoDialogTitle}" state="{dialog>/dialogDescription/infoDialogTitle}" contentWidth="{= ${device>/system/phone} ? '30%' : '25rem'}" afterClose="onDialogClose">
+		<VBox alignItems="Start" justifyContent="Center" class="spgLabOrdP1">
+			<Text text="{dialog>/dialogDescription/infoDialogDescription}" wrapping="true" />
+		</VBox>
+		<beginButton>
+			<Button text="{i18n>ok}" press="onDialogClose"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

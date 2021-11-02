@@ -1,0 +1,35 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 02/01/2021   Vimal Pandu			PCR033603	 Part History Date changes 			*
+ * ******************************************************************************* -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>partHistoryHeading} - {partsReqView>/sSelPartNo}" afterClose="onDialogClose" stretch="{device>/system/phone}"
+		class="sapUiSizeCompact" contentWidth="{= ${device>/system/phone} ? 'auto' : '40%'}"
+		contentHeight="{= ${device>/system/phone} ? 'auto' : '32.5rem'}">
+		<VBox class="spgLabOrdP1">
+			<List id="idPartHistoryList" items="{ToPartHistory}" growing="true" growingThreshold="20" growingScrollToLoad="false"
+				noDataText="{i18n>partsHistoryListNoDataText}" busyIndicatorDelay="0">
+				<CustomListItem>
+					<FlexBox direction="{= ${device>/system/phone} ? 'Column' : 'Row'}" class="spgLabOrdPartHistBox" width="100%"
+						alignItems="{= ${device>/system/phone} ? 'Start' : 'Center'}" justifyContent="{= ${device>/system/phone} ? 'Start' : 'Center'}">
+						<Link text="{ChangedBy}" class="spgLabOrdPartHistIcon sapUiSmallMarginEnd"/>
+						<VBox>
+							<ObjectAttribute text="{ActionText}" class="spgLabOrdPassdownText"/>
+							<ObjectAttribute title="{i18n>oldValueText}" text="{OldValue}" class="spgLabOrdPassdownText"/>
+							<ObjectAttribute title="{i18n>newValueField}" text="{NewValue}" class="spgLabOrdPassdownText"/>
+						</VBox>
+						<!-- Start of PCR033603++ changes -->
+						<!-- <Text text="{path: 'Timestamp', formatter: '.formatter.formatDate'}" class="spgLabOrdPassdownTime"/> -->
+						<Text text="{path: 'Timestamp', formatter: '.formatter.dateFormat'} {path: 'Timestamp', formatter: '.formatter.formatTime'} {i18n>pstTimeZone}" class="spgLabOrdPassdownTime"/>
+						<!-- End of PCR033603++ changes -->
+					</FlexBox>
+				</CustomListItem>
+			</List>
+		</VBox>
+		<endButton>
+			<Button text="{i18n>closeButtonText}" type="Transparent" press="onDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

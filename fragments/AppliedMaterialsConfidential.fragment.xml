@@ -1,0 +1,11 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+ 
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<VBox class="spgLabOrdAmatConfidential" alignItems="Center">
+		<Text text="{i18n>appliedMaterialsConfidential}" class="spgLabOrdLabel spgLabOrdAmatConfidentialText"/>
+	</VBox>
+</core:FragmentDefinition>

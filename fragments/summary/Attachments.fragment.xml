@@ -1,0 +1,41 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<l:Grid defaultSpan="L12 M12 S12">
+		<l:content>
+			<Toolbar class="spgLabOrdTabBar">
+				<Text text="{i18n>attachments}" class="spgLabOrdTabTitle"/>
+				<ToolbarSpacer/>
+				<u:FileUploader icon="sap-icon://add" buttonText="Add" iconFirst="true" buttonOnly="true" id="idFileUploader" maximumFilenameLength="64"
+					filenameLengthExceed="onFileNameExceeded" width="6rem" uploadUrl="" name="FileUploader" sameFilenameAllowed="true" uploadOnChange="false"
+					useMultipart="false" sendXHR="true" uploadStart="onUploadStarted" change="onFileChanged" typeMissmatch="onFileSizeMissmatch"
+					class="spgLabOrdAtt" maximumFileSize="15" fileSizeExceed="onFileSizeMissmatch" uploadComplete="onUploadComplete"
+					visible="{= ${labOrd>/bModifyWO} || ${labOrd>/CreateEvent}}"/>
+			</Toolbar>
+		</l:content>
+	</l:Grid>
+	<ScrollContainer width="100%" focusable="false" class="spgLabOrdAttGridHeight">
+		<l:Grid id="idAttachmentsGrid" defaultSpan="{labOrd>/AttachmentsSpan}" class="spgLabOrdGrid" content="{/Attachment_listSet}">
+			<l:content>
+				<HBox>
+					<HBox height="5.25rem" width="100%" alignItems="Center" class="spgLabOrdP1 spgLabOrdGridBox">
+						<core:Icon src="{path : 'Type', formatter:'.formatter.formatAttIcon'}" class="spgLabOrdAttIcon"/>
+						<VBox width="85%">
+							<Link press="onPressSpgLabOrdAttachment" text="{Filename}"/>
+							<FlexBox direction="{= ${device>/system/phone} ? 'Column' : 'Row'}">
+								<Text text="{i18n>uploadedBy}: {CreatedBy}" class="spgLabOrdAttText"/>
+								<Text text="|" class="sapUiTinyMarginBeginEnd" visible="{device>/system/desktop}"/>
+								<Text text="{i18n>uploadedDate}: {path: 'CreatedAt', formatter: '.formatter.formatDate1'}" class="spgLabOrdAttText"/>
+							</FlexBox>
+						</VBox>
+						<Button icon="sap-icon://delete" type="Default" press="handleDeleteAttachment" visible="{labOrd>/bModifyWO}"/>
+					</HBox>
+				</HBox>
+			</l:content>
+		</l:Grid>
+	</ScrollContainer>
+</core:FragmentDefinition>

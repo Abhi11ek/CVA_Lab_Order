@@ -1,0 +1,175 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 10/12/2020  	Vimal Pandu			PCR032047    Phase - 2 changes					*
+ * 02/01/2021   Vimal Pandu			PCR033603	 Completion Date changes 			*
+ * 03/11/2021   Vimal Pandu			PCR033677	 Phase - 3 changes 					*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+ 
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<VBox width="100%">
+		<l:Grid defaultSpan="L4 M4 S6" class="spgLabOrdGridBorder spgLabOrdViewWOGrid">
+			<l:content>
+				<Toolbar class="spgLabOrdTabBar">
+					<Text text="{i18n>toolInfo}" class="spgLabOrdTabTitle"/>
+					<ToolbarSpacer />
+					<Button type="Accept" text="{i18n>editButtonText}" press="onPressEditWorkOrder" visible="{labOrd>/bModifyWO}" />
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</Toolbar>
+				<!--Start of PCR032047++ changes-->
+				<VBox>
+					<Text text="{i18n>pbgLabel}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{Pbg}" class="spgLabOrdText"/>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>toolName}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{Equipmentdescription}" class="spgLabOrdText"/>
+				</VBox>
+				<!--End of PCR032047++ changes-->
+				<VBox>
+					<Text text="{i18n>serialNo}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{Serialnumber}" class="spgLabOrdText"/>
+				</VBox>
+				<!--Start of PCR032047~~ changes-->
+				<!--<VBox>
+					<Text text="{i18n>toolName}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{Equipmentdescription}" class="spgLabOrdText"/>
+				</VBox>-->
+				<!--End of PCR032047++ changes-->
+				<VBox>
+					<Text text="{i18n>primaryToolManager}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{ToolManagerName}" class="spgLabOrdText"/>
+				</VBox>
+				<!--Start of PCR032047~~ changes-->
+				<!--<VBox>
+					<Text text="{i18n>pbgLabel}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{Pbg}" class="spgLabOrdText"/>
+				</VBox>-->
+				<!--End of PCR032047~~ changes--> 
+				<VBox>
+					<Text wrapping="true" text="{i18n>chamberType}" class="spgLabOrdLabel"/>
+					<Text text="{Assembly}" class="spgLabOrdText"/>
+				</VBox>
+				<VBox>
+					<Text wrapping="true" text="{i18n>toolStatus}" class="spgLabOrdLabel"/>
+					<Text text="{Toolstatusdescription}" class="spgLabOrdText"/>
+				</VBox>
+				<!-- Start of PCR033677++ changes -->
+				<VBox busyIndicatorDelay="0">
+					<Text wrapping="true" text="{i18n>buildingNo}" class="spgLabOrdLabel"/>
+					<BusyIndicator visible="{= ${labOrd>/bBuildNoBusy}}"/>
+					<Text text="{labOrd>/BuildingNo}" class="spgLabOrdText" visible="{= !${labOrd>/bBuildNoBusy}}"/>
+				</VBox>
+				<!-- End of PCR033677++ changes -->
+			</l:content>
+		</l:Grid>
+		<!-- PCR035112++; added id -->
+		<l:Grid id="idViewWOGrid2" defaultSpan="L4 M4 S6" class="spgLabOrdGridBorder spgLabOrdViewWOGrid spgLabOrdWorkDescr">
+			<l:content>
+				<Toolbar class="spgLabOrdTabBar">
+					<Text text="{i18n>workOrderDetails}" class="spgLabOrdTabTitle"/>
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</Toolbar>
+				<VBox>
+					<Text text="{i18n>requestorName}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{RequestedbyName}" class="spgLabOrdText"/>
+				</VBox>
+				<VBox>
+					<Text wrapping="true" text="{i18n>category2}" class="spgLabOrdLabel"/>
+					<Text text="{Category2Desc}" class="spgLabOrdText"/>
+				</VBox>
+				<VBox>
+					<Text wrapping="true" text="{i18n>priority}" class="spgLabOrdLabel"/>
+					<Text text="{Prioritydesc}" class="spgLabOrdText"/>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>creationDate}" wrapping="true" class="spgLabOrdLabel"/>
+					<!-- Start of PCR033677++ changes -->
+					<!-- <Text
+						text="{path: 'CreationDate', formatter : '.formatter.dateFormat'}" class="spgLabOrdText"/> -->
+					<Text
+						text="{path: 'CreatedDateTimeStr', formatter : '.formatter.dateFormat'} {path: 'CreatedDateTimeStr', formatter: '.formatter.formatTime'}"  class="spgLabOrdText"/>
+					<!-- End of PCR033677++ changes -->
+				</VBox>
+				<VBox>
+					<Text text="{i18n>reqStartDate}" wrapping="true" class="spgLabOrdLabel"/>
+					<!-- Start of PCR033677++ changes -->
+					<!-- <Text
+						text="{path: 'Startdatetime', formatter : '.formatter.dateFormat'}" class="spgLabOrdText"/> -->
+					<Text
+						text="{path: 'Startdatetime', formatter : '.formatter.dateFormat'} {path: 'Startdatetime', formatter: '.formatter.formatTime'}"  
+						class="spgLabOrdText"/>
+					<!-- End of PCR033677++ changes -->	
+				</VBox>
+				<!-- Start of PCR033603++ changes -->	
+				<!-- PCR033677~~; removed visible="{= ${Status} === 'E0005'}" -->
+				<VBox>
+					<Text text="{i18n>completionDate}" wrapping="true" class="spgLabOrdLabel"/>
+					<!-- Start of PCR033677++ changes -->
+					<!-- <Text text="{path: 'CompletionDateTime', formatter : '.formatter.dateFormat'}"  class="spgLabOrdText"/> -->
+					<Text 
+						text="{path: 'CompletionDateTime', formatter : '.formatter.dateFormat'} {path: 'CompletionDateTime', formatter: '.formatter.formatTime'}"  
+						class="spgLabOrdText"/>
+					<!-- End of PCR033677++ changes -->
+				</VBox>
+				<!-- End of PCR033603++ changes -->
+				<VBox>
+					<Text text="{i18n>title}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{Projname}" class="spgLabOrdText"/>
+				</VBox>
+				<!-- Start of PCR033677++ changes -->
+				<VBox>
+					<Text text="{i18n>plannedStartDate}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{path: 'PlanStartDateTime', formatter : '.formatter.dateFormat'} {path: 'PlanStartDateTime', formatter: '.formatter.formatTime'}" class="spgLabOrdText"/>
+				</VBox>
+				<VBox>
+					<Text text="{i18n>plannedEndDate}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{path: 'PlanEndDateTime', formatter : '.formatter.dateFormat'} {path: 'PlanEndDateTime', formatter: '.formatter.formatTime'}" class="spgLabOrdText"/>
+				</VBox>
+				<!-- End of PCR033677++ changes -->
+				<VBox>
+					<Text text="{i18n>workDescription}" wrapping="true" class="spgLabOrdLabel"/>
+					<FeedListItem text="{Problemdescription}" showIcon="false" id="idWDFeedListItem" class="sapUiNoContentPadding"/>
+					<layoutData>
+						<!-- Start of PCR033677++ changes -->
+						<l:GridData span="L12 M12 S12"/>
+						<!-- Start of PCR033603~~ changes -->
+						<!-- <l:GridData span="L8 M8 S12"/> -->
+						<!-- <l:GridData span="L12 M12 S12"/> -->
+						<!-- End of PCR033603~~ changes -->
+						<!-- End of PCR033677++ changes -->
+					</layoutData>
+				</VBox>
+				<!-- Start of PCR035112++ changes -->
+				<VBox>
+					<Text text="{i18n>rejectionReason}" wrapping="true" class="spgLabOrdLabel"/>
+					<FeedListItem text="{WoStatusRejection}" showIcon="false" id="idRRFeedListItem" class="sapUiNoContentPadding"/>
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</VBox>
+				<!-- End of PCR035112++ changes -->
+				<VBox>
+					<Text text="{i18n>statusLabel}" wrapping="true" class="spgLabOrdLabel"/>
+					<ObjectStatus text="{WorkStatus}" state="{= ${WorkStatus} === 'DELAYED' ? 'Error' : 'Success'}" class="spgLabOrdText"/>
+				</VBox>
+				<VBox visible="{= ${WorkStatus} === 'DELAYED'}">
+					<Text text="{i18n>delayedReason}" wrapping="true" class="spgLabOrdLabel"/>
+					<Text text="{DelayDesc}"  class="spgLabOrdText"/>
+				<!-- Start of PCR033603++ changes -->	
+				</VBox>	
+					<!-- <layoutData>
+						<l:GridData span="L8 M12 S6"/>
+					</layoutData> 
+				</VBox> -->
+				<!-- End of PCR033603++ changes -->
+			</l:content>
+		</l:Grid>
+	</VBox>
+</core:FragmentDefinition>

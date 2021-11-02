@@ -1,0 +1,289 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "com.amat.spg.labord",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"ZQZG_CRM_WO_SERVICES_SRV": {
+				"uri": "/sap/opu/odata/sap/ZQZG_CRM_WO_SERVICES_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"config": {
+			"fullWidth": true
+		},
+		"rootView": {
+			"viewName": "com.amat.spg.labord.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "idAppControl"
+		},
+		"dependencies": {
+			"minUI5Version": "1.42.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.unified": {},
+				"sap.ushell": {},
+				"sap.collaboration": {
+					"lazy": true
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.amat.spg.labord.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "None"
+				},
+				"dataSource": "ZQZG_CRM_WO_SERVICES_SRV",
+				"preload": true
+			},
+			"labOrd": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": false
+			},
+			"attCrtModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": false
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/styleSheet.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "libs/xlsx.js"
+				},
+				{
+					"uri": "libs/jszip.js"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.amat.spg.labord.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": [
+						"workOrders",
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "workOrders",
+					"target": [
+						"workOrderDetails",
+						"workOrders"
+					]
+				},
+				{
+					"pattern": "WorkOrder/{objectId}",
+					"name": "workOrderDetails",
+					"target": [
+						"workOrders",
+						"workOrderDetails"
+					]
+				},
+				{
+					"pattern": "WorkOrderCreation",
+					"name": "workOrderCreation",
+					"target": [
+						"workOrderCreation"
+					]
+				},
+				{
+					"pattern": "NoWorkOrdersAvailable",
+					"name": "noWorkOrdersAvailable",
+					"target": [
+						"workOrders",
+						"detailNoObjectsAvailable"
+					]
+				}
+			],
+			"targets": {
+				"splitViewTarget": {
+					"viewName": "SplitApp"
+				},
+				"workOrders": {
+					"viewName": "WorkOrders",
+					"viewLevel": 1,
+					"viewId": "workOrders",
+					"controlId": "idSplitAppControl",
+					"controlAggregation": "masterPages",
+					"parent": "splitViewTarget"
+				},
+				"workOrderDetails": {
+					"viewName": "WorkOrderDetails",
+					"viewId": "workOrderDetails",
+					"viewLevel": 2,
+					"controlId": "idSplitAppControl",
+					"controlAggregation": "detailPages",
+					"parent": "splitViewTarget"
+				},
+				"workOrderCreation": {
+					"viewName": "WorkOrderCreation",
+					"viewId": "workOrderCreation",
+					"viewLevel": 3,
+					"transition": "flip"
+				},
+				"summaryView": {
+					"parent": "workOrderDetails",
+					"viewId": "summary",
+					"viewPath": "com.amat.spg.labord.view.summary",
+					"viewName": "Summary",
+					"controlId": "idWorkOrderViewLayout",
+					"controlAggregation": "content"
+				},
+				"orderView": {
+					"parent": "workOrderDetails",
+					"viewId": "order",
+					"viewPath": "com.amat.spg.labord.view.order",
+					"viewName": "Order",
+					"controlId": "idWorkOrderViewLayout",
+					"controlAggregation": "content"
+				},
+				"WorkInstructions": {
+					"parent": "summaryView",
+					"viewId": "workInstructions",
+					"viewPath": "com.amat.spg.labord.view.summary",
+					"viewName": "WorkInstructions",
+					"controlId": "idWorkInstructionsTab",
+					"controlAggregation": "content"
+				},
+				"PartsRequired": {
+					"parent": "summaryView",
+					"viewId": "partsRequired",
+					"viewPath": "com.amat.spg.labord.view.summary",
+					"viewName": "PartsRequired",
+					"controlId": "idPartsRequiredTab",
+					"controlAggregation": "content"
+				},
+				"Assignment": {
+					"parent": "summaryView",
+					"viewId": "assignment",
+					"viewPath": "com.amat.spg.labord.view.summary",
+					"viewName": "Assignment",
+					"controlId": "idAssignmentTab",
+					"controlAggregation": "content"
+				},
+				"Attachments": {
+					"parent": "summaryView",
+					"viewId": "attachments",
+					"viewPath": "com.amat.spg.labord.view.summary",
+					"viewName": "Attachments",
+					"controlId": "idAttachmentsTab",
+					"controlAggregation": "content"
+				},
+				"PassdownLog": {
+					"parent": "summaryView",
+					"viewId": "passdownLog",
+					"viewPath": "com.amat.spg.labord.view.summary",
+					"viewName": "PassdownLog",
+					"controlId": "idPassdownTab",
+					"controlAggregation": "content"
+				},
+				"confirmationView": {
+					"parent": "workOrderDetails",
+					"viewId": "confirmation",
+					"viewPath": "com.amat.spg.labord.view.confirmation",
+					"viewName": "Confirmation",
+					"controlId": "idWorkOrderViewLayout",
+					"controlAggregation": "content"
+				},
+				"PartsConfirmation": {
+					"parent": "workOrderDetails",
+					"viewId": "partsConfirmation",
+					"viewPath": "com.amat.spg.labord.view.confirmation",
+					"viewName": "PartsConfirmation",
+					"controlId": "idPartsConfirmationTab",
+					"controlAggregation": "content"
+				},
+				"detailObjectNotFound": {
+					"viewName": "DetailObjectNotFound",
+					"viewId": "detailObjectNotFound",
+					"controlId": "idSplitAppControl",
+					"controlAggregation": "detailPages",
+					"parent": "splitViewTarget"
+				},
+				"detailNoObjectsAvailable": {
+					"viewName": "DetailNoObjectsAvailable",
+					"viewId": "detailNoObjectsAvailable",
+					"controlId": "idSplitAppControl",
+					"controlAggregation": "detailPages",
+					"parent": "splitViewTarget"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound",
+					"controlId": "idSplitAppControl",
+					"controlAggregation": "detailPages",
+					"parent": "splitViewTarget"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zspg_labord/webapp",
+		"_version": "1.1.0"
+	}
+}

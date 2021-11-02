@@ -1,0 +1,2513 @@
+/*
+ * This is the Cascading Style Sheet for Labor Order App
+ * ------------------------------------------------------------------------------------ *
+ * Date     	Author 					PCR No.      Description of change				*
+ * ----------  	--------------------	---------    ---------------------------------- *
+ * 07/27/2020  	Vimal Pandu				PCR030784    Initial Version					*
+ * 10/12/2020  	Vimal Pandu				PCR032047    Phase - 2 changes					*
+ * 02/01/2021   Vimal Pandu				PCR033603	 Completion Date changes 			*
+ * 03/11/2021   Vimal Pandu				PCR033677	 Phase - 3 changes 					*
+ * 05/19/2021   Nageswar V				PCR035112	 Phase - 4 changes                  *
+ * 07/15/2021   Nageswar V				PCR035464	 Tech upgrade changes 				*
+ * ------------------------------------------------------------------------------------ */
+ 
+/*Page*/
+
+.spgLabOrd.sapUiBody {
+	background-image: linear-gradient(to bottom, #f7f7f7 0, #f7f7f7 50%, #f7f7f7 100%) !important;
+}
+
+.spgLabOrd .sapUiGlobalBackgroundColor,
+.spgLabOrd .sapMGlobalBackgroundColor {
+    background-image: linear-gradient(to bottom, #f7f7f7 0, #f7f7f7 50%, #f7f7f7 100%) !important;
+}
+
+.spgLabOrd .sapMPageHeader::before {
+    border-top: none;
+}
+
+
+/*Master Page*/
+
+.spgLabOrd .sapMSplitContainerMaster {
+    width: 25rem;
+}
+
+.spgLabOrd .sapMSplitContainerPortrait.sapMSplitContainerShowHide>.sapMSplitContainerMasterHidden {
+    left: -5rem;
+}
+
+
+/*Footer*/
+
+.spgLabOrd .sapMIBar.sapMFooter-CTX,
+.spgLabOrd .sapMPageFooter .sapMIBar-CTX.sapMFooter-CTX.sapMTB {
+    background-color: #fff !important;
+    box-shadow: 0px 0px 1px grey;
+    border: 1px solid;
+}
+
+
+/*Buttons*/
+
+.spgLabOrd .sapMBtnInner {
+	font-size: 0.875rem;
+    height: 1.625rem;
+    min-width: 1.625rem;
+}
+
+.spgLabOrd .sapMBtnContent {
+	line-height: 1.5rem;
+}
+
+.spgLabOrd .sapMBtnInner {
+    border-radius: 3px;
+}
+
+.spgLabOrd .sapMBtnIcon {
+	font-size: 0.875rem;
+    margin: 0 1px;
+    line-height: 1.5rem;
+    width: 1.5rem;
+}
+
+.spgLabOrd .sapMBtn:focus .sapMBtnFocusDiv {
+    border: 1px dashed #fff;
+}
+
+
+.spgLabOrd .sapMBtnCustomIcon.sapMBtnIcon {
+    color: #5ba435;
+}
+
+.spgLabOrd .sapMBtn:focus>.sapMFocusable {
+    outline: 1px dotted #5ba435 !important;
+}
+
+.spgLabOrd .sapMIBar-CTX.sapMFooter-CTX .sapMBtnInner>.sapMBtnIcon {
+    color: #5ba435;
+    text-shadow: none;
+}
+
+.spgLabOrd .sapMFooter-CTX .sapMBtn:hover>.sapMBtnHoverable:not(.sapMBtnActive) {
+    background-color: #005f28;
+    text-shadow: none;
+}
+
+.spgLabOrd .sapMBtnInner.sapMBtnText.sapMBtnIconFirst, 
+.spgLabOrd .sapMBtnInner.sapMBtnText.sapMBtnBack {
+    padding-left: 1.7rem;
+}
+
+
+/*default*/
+
+.spgLabOrd .sapMOTAPopover .sapMBtnTransparent:not(.sapMBtnActive):not(.sapMToggleBtnPressed),
+.spgLabOrd span.sapMBtnInner.sapMBtnDefault,
+.spgLabOrd div.sapMBtnInner.sapMBtnDefault {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: #5ba435;
+    color: #5ba435;
+    text-shadow: none;
+}
+
+.spgLabOrd .sapMBtn:hover>.sapMBtnHoverable.sapMBtnDefault:not(.sapMBtnActive),
+.spgLabOrd :not(.sapMBtnDisabled):hover>.sapMBtnDefault.sapMBtnActive,
+.spgLabOrd :not(.sapMBtnDisabled)>.sapMBtnDefault.sapMBtnActive {
+    background-color: #5ba435;
+    border-color: #5ba435;
+    color: #fff;
+    text-shadow: none;
+}
+
+
+/*transparent*/
+
+.spgLabOrd span.sapMBtnInner.sapMBtnTransparent,
+.spgLabOrd div.sapMBtnInner.sapMBtnTransparent {
+    background-color: #fff0;
+    border-color: #fff0;
+    color: #5ba435;
+    text-shadow: none;
+}
+
+.spgLabOrd :not(.sapMBtnDisabled)>.sapMBtnTransparent.sapMBtnActive {
+    background-color: #5ba435;
+    border-color: #5ba435;
+    color: #fff;
+    text-shadow: none;
+}
+
+.spgLabOrd .sapMBtn:hover>.sapMBtnInner.sapMBtnHoverable.sapMBtnTransparent .sapMBtnIcon {
+	background: #fff0;
+	color: #5ba435;
+}
+
+.spgLabOrd .sapMBtn:hover>.sapMBtnHoverable.sapMBtnTransparent:not(.sapMBtnActive) {
+    background: #ebf7e5;
+    color: #5ba435;
+}
+
+.spgLabOrd :not(.sapMBtnDisabled)>.sapMBtnTransparent.sapMBtnActive .sapMBtnIcon {
+    color: #fff !important;
+}
+
+
+/*accept*/
+
+.spgLabOrd span.sapMBtnInner.sapMBtnAccept,
+.spgLabOrd div.sapMBtnInner.sapMBtnAccept {
+    background-color: #5ba435;
+    border-color: #5ba435;
+    color: #fff;
+    text-shadow: none;
+}
+
+.spgLabOrd .sapMBtn:hover>.sapMBtnInner.sapMBtnHoverable.sapMBtnAccept .sapMBtnIcon,
+.spgLabOrd .sapMBtn:hover>.sapMBtnHoverable.sapMBtnAccept:not(.sapMBtnActive),
+.spgLabOrd :not(.sapMBtnDisabled)>div.sapMBtnInner.sapMBtnAccept.sapMBtnActive {
+	background-color: #338016;
+	border-color: #338016;
+}
+
+
+/*reject*/
+
+.spgLabOrd span.sapMBtnInner.sapMBtnReject,
+.spgLabOrd div.sapMBtnInner.sapMBtnReject {
+    background-color: #fff;
+    border-color: #FF5454;
+    color: #FF5454;
+}
+
+.spgLabOrd .sapMBtn:hover>.sapMBtnInner.sapMBtnHoverable.sapMBtnReject .sapMBtnIcon,
+.spgLabOrd .sapMBtn:hover>.sapMBtnHoverable.sapMBtnReject:not(.sapMBtnActive),
+.spgLabOrd :not(.sapMBtnDisabled)>div.sapMBtnInner.sapMBtnReject.sapMBtnActive {
+	background-color: #FF5454;
+	border-color: #FF5454;
+}
+
+.spgLabOrd div.sapMBtnInner.sapMBtnReject>.sapMBtnIcon {
+	/* PCR035112++; added !important */
+	color: #FF5454 !important;
+}
+
+.spgLabOrd :not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive .sapMBtnIcon,
+.spgLabOrd .sapMBtn:hover>.sapMBtnInner.sapMBtnHoverable .sapMBtnIcon,
+.spgLabOrd :not(.sapMBtnDisabled)>div.sapMBtnInner.sapMBtnDefault.sapMBtnActive,
+.spgLabOrd :not(.sapMBtnDisabled)>div.sapMBtnInner.sapMBtnAccept.sapMBtnActive,
+.spgLabOrd .sapMBtn:hover>.sapMBtnHoverable.sapMBtnAccept:not(.sapMBtnActive),
+.spgLabOrd :not(.sapMBtnDisabled)>div.sapMBtnInner.sapMBtnReject.sapMBtnActive,
+.spgLabOrd .sapMBtn:hover>.sapMBtnHoverable.sapMBtnReject:not(.sapMBtnActive) {
+    color: #fff;
+}
+
+
+/*Search Field*/
+
+.spgLabOrd .sapMITBSelected .sapMITBFilterDefault {
+    background: #5ba435;
+    color: #fff;
+    border: 1px solid #5ba435;
+}
+
+.spgLabOrd .sapMITBFilterIcon {
+    background: #fff;
+    border: 1px solid #5ba435;
+    color: #5ba435;
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    line-height: 2.5rem;
+}
+
+.spgLabOrd .sapMSF {
+    padding: 0.1rem 0;
+}
+
+.spgLabOrd .sapMSF form {
+    border: 1px solid #b2b2b2;
+    border-radius: 2px;
+    box-shadow: 0px 0px 1px grey;
+}
+
+.spgLabOrd .sapMFocus>.sapMSFF>.sapMSFB,
+.spgLabOrd .sapMSFB {
+    color: #5ba435;
+}
+
+.spgLabOrd :not(.sapMSFDisabled)>.sapMSFF:hover {
+	border-color: #5ba435;
+}
+
+.spgLabOrd .sapMSFF>.sapMSFB:not(.sapMSFBF):active, 
+.spgLabOrd .sapMSFF>.sapMSFB.sapMSFBA {
+	background-color: #5ba435;
+	color: #fff;
+}
+
+/*multi-input*/
+
+.spgLabOrd .sapMMultiInputBorder {
+    border-radius: 2px;
+    height: 2.25rem;
+    border: 1px solid #89919a;
+}
+
+.spgLabOrd .sapMMultiInputInputContainer>input {
+	height: 2.25rem;
+	border: 1px solid #fff;
+}
+
+.spgLabOrd .sapMMultiInput .sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):focus,
+.spgLabOrd .sapMMultiInput .sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner):hover {
+    border-color: #fff;
+}
+
+.spgLabOrd .sapMToken.sapMTokenSelected:hover, .sapMToken.sapMTokenSelected:hover {
+	background: #5ba435 !important;
+	border: 1px solid #5ba435 !important;
+}
+
+
+
+/*Input*/
+
+.spgLabOrd .sapMInputBaseInner {
+	/* Start of PCR035464++ changes */
+    /* border: 1px solid #89919A; */
+    border: 0px;
+    /* End of PCR035464++ changes */
+    border-radius: 2px;
+    height: 2.25rem;
+}
+
+.spgLabOrd .sapMInputBase {
+    line-height: 1.75rem;
+    height: 2.25rem;
+    margin: 3px 0;
+}
+
+.spgLabOrd .sapMInputBasePlaceholder {
+	line-height: 2.25rem;
+	height: 2.25rem;
+}
+
+.spgLabOrd .sapMInputBaseDisabled {
+    opacity: 1;
+}
+
+.spgLabOrd .sapMInputBaseDisabled .sapMInputBaseDisabledInner {
+	background-color: rgba(242, 242, 242, 0.5);
+}
+
+.spgLabOrd .sapMInputBaseWidthPadding {
+    padding: 1px 0;
+}
+
+.spgLabOrd .sapMInputBase .sapMInputBaseDisabledWrapper {
+    border: 1px solid #bfbfbf;
+    background: #f7f7f7;
+}
+
+.spgLabOrd .sapMInputBaseIcon {
+    width: 2rem;
+    min-width: 2rem;
+    /* Start of PCR035464++ changes */
+    /* line-height: 1.875rem; */
+    line-height: 1.5rem;
+    /* End of PCR035464++ changes */
+}
+
+.spgLabOrd .sapMInputBaseContentWrapper {
+    height: 2rem;
+    border-radius: 3px;
+}
+
+.spgLabOrd .sapMInputBaseIconPressed .sapMInputBaseIcon,
+.spgLabOrd .sapMInputBaseIconPressed .sapMInputBaseIcon:hover {
+    background: #5ba435;
+}
+
+.spgLabOrd .sapMFocus .sapMInputBaseContentWrapper:not(.sapMInputBaseReadonlyWrapper):not(.sapMInputBaseContentWrapperState) {
+    border: 1px solid #5ba435;
+}
+
+.spgLabOrd .sapMInputBaseIconPressed .sapMInputBaseContentWrapper:not(.sapMInputBaseReadonlyWrapper):not(.sapMInputBaseContentWrapperState):not(.sapMInputBaseDisabledWrapper) {
+    border-color: #5ba435;
+}
+
+.spgLabOrd .sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner):hover,
+.spgLabOrd .sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):focus {
+	border-color: #5ba435;
+}
+
+.spgLabOrd .sapMInputValHelp {
+    top: 2px;
+}
+
+.spgLabOrd .sapMInputBaseState .sapMInputValHelp {
+    height: 2rem;
+    width: 2rem;
+}
+
+.spgLabOrd .sapMInputBaseState .sapMInputValHelp>.sapMInputValHelpInner {
+    height: 2rem;
+    width: 2rem;
+    line-height: 1.875rem;
+}
+
+
+/*ComboBox*/
+
+.spgLabOrd .sapMComboBoxTextField {
+    border: 1px solid #89919A;
+    border-radius: 2px;
+    height: 2.25rem;
+    padding: 1px 0;
+}
+
+.spgLabOrd .sapMSelectListItemBase.sapMSelectListItemBasePressed {
+    background: #5ba435;
+}
+
+.spgLabOrd .sapMComboBoxTextField .sapMInputBaseInner {
+    border: none;
+    width: calc(100% - 2px);
+    margin: 0 1px;
+}
+
+.spgLabOrd .sapMComboBoxTextFieldArrow {
+    color: #5ba435;
+    margin: 1px;
+    height: 2rem;
+    line-height: 2rem;
+}
+
+.spgLabOrd .sapMComboBoxBasePressed:not(.sapMComboBoxTextFieldReadonly):not(.sapMComboBoxTextFieldState):not(.sapMComboBoxTextFieldDisabled) {
+    border-color: #5ba435;
+}
+
+.spgLabOrd .sapMComboBoxBasePressed .sapMComboBoxBaseArrow,
+.spgLabOrd .sapMComboBoxBasePressed .sapMComboBoxBaseArrow:hover,
+.spgLabOrd .sapMInputBaseIcon:active {
+    background: #5ba435 !important;
+}
+
+.spgLabOrd .sapMFocus.sapMComboBoxTextField:not(.sapMComboBoxTextFieldReadonly):not(.sapMComboBoxTextFieldState):not(.sapMComboBoxTextFieldDisabled), 
+.spgLabOrd .sapMComboBoxTextField:not(.sapMComboBoxTextFieldReadonly):not(.sapMComboBoxTextFieldState):not(.sapMComboBoxTextFieldDisabled):hover {
+	border-color: #5ba435;
+}
+
+/*DatePicker*/
+
+.spgLabOrd .sapUiCalItemSel {
+    background-color: #5ba435;
+}
+
+.spgLabOrd .sapMInputValHelp {
+    width: 2rem;
+}
+
+.spgLabOrd .sapMInputValHelp>.sapMInputValHelpInner {
+    height: 2.2rem;
+    width: 2rem;
+    line-height: 2.2rem;
+}
+
+.spgLabOrd .sapUiCalHead>.sapUiCalHeadB,
+.spgLabOrd .sapMInputValHelpInner {
+    color: #5ba435;
+}
+
+.spgLabOrd .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:active {
+	background-color: #5ba435;
+}
+
+.spgLabOrd .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn.sapMTPSliderExpanded .sapMTimePickerSlider .sapMTPPickerSelectionFrame:active + ul>li.sapMTimePickerItem.sapMTimePickerItemSelected,
+.spgLabOrd .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem.sapMTimePickerItemSelected,
+.spgLabOrd .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem:active,
+.spgLabOrd .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem:hover {
+    background: #5ba435 !important;
+}
+
+.spgLabOrd .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn.sapMTPSliderExpanded .sapMTimePickerSlider .sapMTPPickerSelectionFrame + ul>li.sapMTimePickerItem.sapMTimePickerItemSelected,
+.spgLabOrd .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn.sapMTPSliderExpanded .sapMTimePickerSlider .sapMTPPickerSelectionFrame:hover + ul>li.sapMTimePickerItem.sapMTimePickerItemSelected {
+    background: #d8d8d8 !important;
+}
+
+.spgLabOrd .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn.sapMTPSliderExpanded .sapMTimePickerSlider .sapMTPPickerSelectionFrame {
+    border: 2px solid #5ba435;
+}
+
+.spgLabOrd .sapMTimePickerSwitch .sapMSegB {
+	width: 10rem !important;
+}
+
+.spgLabOrd .sapUiCalHead>.sapUiCalHeadB,
+.spgLabOrd .sapUiCalCancel,
+.spgLabOrd .sapUiCalHead>.sapUiCalHeadB:hover,
+.spgLabOrd .sapUiCalHead>.sapUiCalHeadB:focus {
+    color: #5ba435 !important;
+}
+
+.spgLabOrd .sapUiCalItemSel:hover,
+.spgLabOrd .sapUiCalItemSel:focus {
+    background-color: #5ba435 !important;
+}
+
+.spgLabOrd .sapUiCalHead>button:active,
+.spgLabOrd .sapUiCalCancel:active,
+.spgLabOrd .sapUiCalHead>button:active,
+.spgLabOrd .sapUiCalHead>button:active>.sapUiCalHeadBAddText,
+.spgLabOrd .sapUiCalCancel:active {
+    background-color: #ebf7e5;
+}
+
+
+/*TextArea*/
+
+.spgLabOrd .sapMTextArea>.sapMTextAreaInner {
+    padding: 0.27rem 0.5rem;
+}
+
+
+/*Grid*/
+
+.spgLabOrd .sapUiRespGrid.sapUiRespGridHSpace1 {
+    margin: 0 1rem;
+    padding: 0 0 0.5rem;
+}
+
+.spgLabOrd .sapUiRespGrid.sapUiRespGridHSpace1>div {
+    margin: 0.5rem 0.5rem;
+}
+
+.spgLabOrd .sapUiRespGrid.sapUiRespGridHSpace1>div:first-child {
+    margin: 0.75rem 0.5rem 0;
+}
+
+.spgLabOrd .spgLabOrdGrid.sapUiRespGrid.sapUiRespGridHSpace1>div:first-child {
+    margin: 0.5rem 0.5rem;
+}
+
+.spgLabOrd .sapMIBar.sapMTB .sapMBarChild:first-child {
+    margin-left: 0;
+}
+
+
+/*List*/
+
+/*Start of PCR032047++ changes*/
+
+.spgLabOrd .sapMCLI:not(.sapMLIBNoFlex)>.sapMLIBContent {
+    width: 86%;
+}
+
+/*End of PCR032047++ changes*/
+
+.spgLabOrd .sapMLIBImgNav {
+    width: 2.5rem;
+}
+
+.spgLabOrd .sapMLIB {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.spgLabOrd .sapMLIB.sapMLIBActive {
+    color: #464b4e;
+    background: #ebf7e5;
+}
+
+.spgLabOrd .sapMLIBActive .sapMLIBImgNav,
+.spgLabOrd .sapMLIBActive .sapMText {
+    color: #464b4e;
+}
+
+.spgLabOrd .sapMLIB,
+.spgLabOrd .sapMListHdrText {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.spgLabOrd .sapMListBGSolid .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover) {
+    background: #fff;
+}
+
+.spgLabOrd .sapMLIB.sapMLIBSelected {
+    background: #ebf7e5;
+}
+
+.spgLabOrd .sapMListBGTranslucent .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover) {
+    background: #fff;
+}
+
+
+/*Text Area*/
+
+.spgLabOrd .sapMTextArea,
+.spgLabOrd .sapMTextArea>div,
+.spgLabOrd .sapMTextArea .sapMInputBaseInner {
+    height: auto;
+}
+
+
+/*Switch*/
+
+.spgLabOrd .sapMSwt {
+    height: 1.25rem;
+    width: 3.5rem;
+}
+
+.spgLabOrd .sapMSwtText {
+    line-height: 1.4rem;
+}
+
+.spgLabOrd .sapMSwtOn:not(.sapMSwtAcceptReject) {
+    background: #ecf7e6;
+    border-color: #5ba435;
+}
+
+.spgLabOrd .sapMSwtOn .sapMSwtText {
+    color: #3d4144;
+}
+
+.spgLabOrd .sapMSwtOn .sapMSwtText:hover {
+    color: #fff;
+}
+
+.spgLabOrd .sapMSwtOff .sapMSwtText:hover {
+    color: #000;
+}
+
+.spgLabOrd .sapMSwtCont {
+    padding: 0;
+}
+
+.spgLabOrd .sapMSwtHandle {
+    width: 1rem;
+    height: 1rem;
+}
+
+.spgLabOrd .sapMSwtOn .sapMSwtHandle {
+    background: #5ba435;
+    box-sizing: border-box;
+    border: 2px solid #5ba435;
+}
+
+.spgLabOrd .sapMSwtHoverable.sapMSwtOn:not(.sapMSwtAcceptReject):hover {
+    background-color: #007833;
+    border-color: #005f28;
+}
+
+.spgLabOrd html.sap-desktop .sapMSwtCont:focus>.sapMSwt {
+    outline: 0px dotted #000 !important;
+}
+
+.spgLabOrd .sapMSwt.sapMSwtHoverable:hover {
+    border-color: #5ba435 !important;
+}
+
+
+/*Segmented Button*/
+
+.spgLabOrd .sapMSegBBtn.sapMSegBBtnSel {
+    background: #5ba435;
+    color: #fff;
+}
+
+.spgLabOrd .sapMSegBBtnFocusable:hover {
+    background: #ebf7e5;
+}
+
+
+.spgLabOrd .sapMSegB .sapMSegBBtn {
+    padding: 0;
+    color: #5ba435;
+    border-top: 1px solid #5ba435;
+    border-left: 1px solid #5ba435;
+    border-bottom: 1px solid #5ba435;
+    height: 2.125rem;
+    line-height: 2rem;
+    top: 3px;
+    position: relative;
+}
+
+.spgLabOrd .sapMSegB .sapMSegBBtn .sapMSegBBtnInner {
+    color: #5ba435;
+    border: 1px solid #ffffff00;
+}
+
+.spgLabOrd .sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel .sapMSegBBtnInner {
+    background: #5ba435;
+    color: #fff;
+}
+
+.spgLabOrd .sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel {
+    border-right: 1px solid #5ba435;
+    color: #fff;
+}
+
+.spgLabOrd .sapMSegBBtn.sapMSegBtnLastVisibleButton {
+    border-right: 1px solid #5ba435;
+}
+
+.spgLabOrd .sapMSegBBtn.sapMSegBBtnSel .sapMSegBBtnInner {
+    background: #5ba435;
+    border-color: #5ba435;
+}
+
+.spgLabOrd .sapMSegBBtn:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.spgLabOrd .sapMSegBBtn:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.spgLabOrd .sapMSegBBtn:last-child .sapMSegBBtnInner {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.spgLabOrd .sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel:hover,
+.spgLabOrd .sapMSegBBtnSel>div:hover {
+    background: #338016 !important;
+}
+
+.spgLabOrd .sapMSegBBtn:last-child {
+    border-right: 1px solid #5ba435;
+}
+
+
+/*Icon Tab Bar*/
+
+.spgLabOrd .sapMITH {
+    background: #fff;
+}
+
+.spgLabOrd .sapMITBHead {
+    margin-top: 0.5rem;
+}
+
+.spgLabOrd .sapMITBSelected>.sapMITBContentArrow {
+    border-bottom: 3px solid #5ba435;
+}
+
+.spgLabOrd .sapMITBSelected>div>.sapMITBContentArrow {
+    border-bottom: .2rem solid #5ba435;
+}
+
+.spgLabOrd .sapMITBVertical {
+    height: 5.5rem;
+}
+
+.spgLabOrd .sapMITBTab {
+    margin-top: 0.5rem;
+    width: 7rem;
+}
+
+.spgLabOrd .sapMITBText {
+    width: 7rem;
+}
+
+.spgLabOrd .sapMITBContent {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.spgLabOrd .sapMITBContainerContent {
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.spgLabOrd .sapMSplitContainerDetail .sapMITB.sapUiResponsiveContentPadding > .sapMITBContainerContent > .sapMITBContent {
+    padding: 0rem;
+}
+
+
+/*FeedList Item*/
+
+.spgLabOrd .sapMFeedListItemTextText {
+    padding-top: 4px;
+}
+
+.spgLabOrd .sapMFeedListShowSeparatorsAll.sapMLIB {
+    border-bottom: .063rem solid #f7f7f7;
+}
+
+.spgLabOrd .sapMFeedListItemTitleDiv.sapMLIB,
+.spgLabOrd .sapMFeedListShowSeparatorsAll .sapMFeedListItem {
+    padding: 0;
+}
+
+.spgLabOrd .sapMFeedListItem .sapMFeedListItemTextText .sapMFeedListItemTextString {
+    color: #44484b;
+}
+
+.spgLabOrd .sapMFeedListItemText {
+	color: #32363A;
+}
+
+
+/*Table*/
+
+.spgLabOrd .sapMListTbl th,
+.spgLabOrd .sapMTableTH {
+    background: #eeeeee;
+}
+
+.spgLabOrd .sapMCbBg {
+    height: 1rem;
+    width: 1rem;
+    line-height: 1rem;
+    font-size: 0.5rem;
+    border-radius: 3px;
+}
+
+.spgLabOrd .sapMCbBg {
+    border: solid 1px #e8e9ec;
+}
+
+.spgLabOrd .sapMCbBg.sapMCbMarkChecked:before {
+    color: #5ba435;
+}
+
+.spgLabOrd .sapMCbBg.sapMCbMarkChecked:before {
+    font-size: 0.75rem;
+}
+
+.spgLabOrd .sapMColumnHeader>.sapMText {
+    font-size: small;
+}
+
+.spgLabOrd .sapMListBGTranslucent .sapMListTblSubRow {
+    background: #fff;
+}
+
+.spgLabOrd .sapMCb:not(.sapMCbBgDis):not(.sapMCbHasLabel):focus>.sapMCbBg {
+    outline-color: #5ba435
+}
+
+
+/*Link*/
+
+.spgLabOrd .sapMLnk {
+    color: #5ba435 !important;
+}
+
+.spgLabOrd .sapMLnk:visited,
+.spgLabOrd .sapMLnk:hover {
+    color: #5ba435 !important;
+    text-decoration-line: none !important;
+}
+
+
+/*File Uploader*/
+
+.spgLabOrd .sapUiFup div.sapMBtnInner.sapMBtnDefault {
+    background: #5ba435;
+    background-color: #5ba435;
+    border-color: #5ba435;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.spgLabOrd .sapUiFup button {
+    width: auto !important;
+    padding: 0 !important;
+}
+
+.spgLabOrd .sapUiFup .sapMBtnIcon {
+	color: #fff !important;
+}
+
+.spgLabOrd .sapUiFup:active div.sapMBtnInner.sapMBtnDefault {
+    background: #338016;
+    background-color: #338016;
+    color: #fff;
+}
+
+.spgLabOrd .sapUiFup:hover .sapMBtnHoverable.sapMBtnDefault:not(.sapMBtnActive) {
+    background-image: none;
+    background-color: #338016;
+    color: #fff;
+}
+
+
+/*Pull to refresh*/
+
+.spgLabOrd .sapMPullDownTouch>.sapMPullDownIcon::before {
+    color: #5ba435;
+}
+
+
+/*Dialog*/
+
+.spgLabOrd .sapMDialog {
+	border-radius: 3px;
+}
+
+.spgLabOrd .sapMDialogSection {
+	background-color: #fff;
+}
+
+.spgLabOrd .sapMPopup-CTX .sapMIBar.sapMHeader-CTX {
+    background-color: #fff;
+    border-top: none;
+}
+
+.spgLabOrd .sapMDialog .sapMIBar.sapMFooter-CTX {
+	margin: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: 0px 0px 1px grey;
+}
+
+.spgLabOrd .sapMDialogNone>header.sapMBar {
+    box-shadow: inset 0 -0.0625rem #32363A;
+}
+
+.spgLabOrd .sapMDialog>.sapMDialogTitle .sapMBarPH {
+	text-align: start;
+    margin-left: 0.75rem;
+}
+
+.spgLabOrd .sapMDialogWarning>header.sapMDialogTitle .sapUiIcon {
+    color: #E9730C;
+}
+
+
+/*Error State*/
+
+.spgLabOrd .sapMInputBaseErrorInner {
+    border-color: #e52929 !important;
+}
+
+.spgLabOrd .sapMComboBoxTextFieldError {
+    border-color: #e52929 !important;
+}
+
+.spgLabOrd .sapMObjStatusError>.sapMObjStatusText, 
+.spgLabOrd .sapMObjStatusError>.sapMObjStatusIcon {
+    color: #eb4f52;
+}
+
+.spgLabOrd .sapMObjStatusSuccess>.sapMObjStatusText, 
+.spgLabOrd .sapMObjStatusSuccess>.sapMObjStatusIcon {
+    color: #228016;
+}
+
+
+/*MessageToast*/
+
+.spgLabOrd .sapMMessageToast {
+    background: #db5c64 !important;
+    text-shadow: none;
+    color: #fff;
+    box-shadow: 0px 0px 15px #80808075;
+    margin: 0.5rem;
+}
+
+
+/********** Popover Styles **********/
+
+.spgLabOrd .sapMOTAPopover.sapMOTAPButtonsWithIcons .sapMOTAPButtonNoIcon>.sapMBtnInner>span.sapMBtnContent {
+    margin-left: 0;
+    text-align: center;
+}
+
+.spgLabOrd .sapMSltBar::after {
+	background: #5ba435;
+}
+
+.spgLabOrd .sapMSelectListItemBaseSelected {
+    background: #ebf7e5;
+}
+
+.spgLabOrd .sapMSltPicker .sapMIBar.sapMIBar-CTX {
+    border: 0.0625rem solid #5ba435;
+}
+
+.spgLabOrd .sapMOTAPopover.sapMPopover .sapMPopoverCont .sapMPopoverScroll>div.sapMSegBSelectWrapper>div.sapMSlt {
+    border-radius: 3px;
+    border: 1px solid #5ba435;
+}
+
+.spgLabOrd .sapMSlt>.sapMSltLabel {
+    color: #5ba435;
+}
+
+.spgLabOrd .sapMSltArrow, 
+.spgLabOrd .sapMSltBar::after {
+    color: #5ba435;
+}
+
+.spgLabOrd .sapMSltInput .sapMInputBaseInner {
+	border: 1px solid #fff;
+}
+
+
+/*Busy Indicator*/
+
+.spgLabOrd .sapUiLocalBusyIndicatorAnimation>div::before {
+    background: #5ba435;
+}
+
+.spgLabOrd .sapUiLocalBusyIndicatorAnimation>div::after {
+    box-shadow: inset 0 0 2px 1px rgb(91 164 53);
+}
+
+
+/*Bar*/
+
+.spgLabOrd .sapMTB {
+    border-bottom: 1px solid #ffffff00;
+}
+
+/********** Custom Styles **********/
+
+.spgLabOrdPageTitle {
+    font-size: 1.1rem;
+    color: #32363A;
+}
+
+/*Start of PCR032047++ changes*/
+
+/*.spgLabOrdTblRow {
+    height: 6rem;
+}*/
+
+/*End of PCR032047++ changes*/
+
+.spgLabOrdMstListHdrBox,
+.spgLabOrdTblRow .sapMLIBContent {
+    padding: 0.5rem 0rem 0.5rem 1rem;
+}
+
+/*PCR032047++; added spgLabOrdMstListDashboardHdrBox*/
+.spgLabOrdMstListDashboardHdrBox, 
+.spgLabOrdMstListHdrBox {
+    z-index: 5;
+    /*Start of PCR032047++ changes*/
+    /*width: 25rem; */
+    width: 100%;
+    /*End of PCR032047++ changes*/
+    height: 2rem;
+    background: #eeeeee;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/*Start of PCR032047++ changes*/
+
+/*.spgLabOrdMstListHdrBox>div:first-child {
+    width: calc(100% - 13.75rem);
+}
+
+.spgLabOrdMstListBox>div:first-child {
+    width: calc(100% - 12.25rem);
+}
+
+.spgLabOrdMstListHdrBox>div:nth-child(2),
+.spgLabOrdMstListBox>div:nth-child(2) {
+	width: 6rem;
+}
+
+.spgLabOrdMstListHdrBox>div:last-child,
+.spgLabOrdMstListBox>div:last-child {
+    width: 6.25rem;
+}*/
+
+/*End of PCR032047++ changes*/
+
+.spgLabOrdMstListScrollCont {
+    /*height: calc(100% - 2rem) !important; PCR032047-- */ 
+    overflow: overlay !important;
+    -ms-overflow-y: auto !important;
+    -ms-overflow-style: -ms-autohiding-scrollbar !important;
+}
+
+.sapLabOrdMstListText {
+    color: #464b4e;
+    margin-right: 3px;
+}
+
+.spgLabOrdMstTitle .sapMObjectIdentifierTitle {
+    display: inline;
+    margin-right: 0.3125rem;
+}
+
+.spgLabOrdMstTitle .sapMObjectIdentifierTopRow,
+.spgLabOrdMstTitle .sapMObjectIdentifierText {
+	display: inline;
+}
+.spgLabOrdMstTitle .sapMObjectIdentifierTitle>span:first-child:after {
+    content: ": ";
+}
+
+.spgLabOrdMstTitle .sapMObjectIdentifierTitle .sapMText {
+    font-size: small;
+    font-weight: normal;
+    color: #898a8d;
+}
+
+.spgLabOrdMstTitle .sapMObjectIdentifierTextBellow .sapMText {
+    color: #000;
+}
+
+.spgLabOrd .sapMOH.sapMOHBgTransparent,
+.spgLabOrd .sapMOHC.sapMOHBgTransparent {
+    background-color: #fff;
+}
+
+.asterisk:after {
+    content: " *";
+    color: red;
+    font-size: 1rem;
+}
+
+.spgLabOrdLabel {
+    color: #6A6D70;
+}
+
+.spgLabOrdText {
+    color: #222;
+    padding-top: 4px;
+}
+
+.spgLabOrdTableText {
+    color: #32363A !important;
+	font-size: 0.8125rem !important;
+	line-height: 0.934rem !important;
+}
+
+.spgLabOrdTabTitle {
+    color: #32363A;
+    font-weight: bold;
+}
+
+.spgLabOrdTabBar {
+    border-bottom: 0px solid #b2b2b2;
+}
+
+.spgLabOrdGridBorder {
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.spgLabOrdViewWOGrid>div {
+    height: 3.25rem;
+}
+
+.spgLabOrdViewWOGrid>div:first-child {
+    height: auto;
+}
+
+.spgLabOrdAmatConfidential {
+    padding: 0.5rem;
+}
+
+.spgLabOrdAmatConfidentialText {
+    font-size: small;
+}
+
+.spgLabOrdAttGridHeight {
+	overflow: overlay !important;
+	-ms-overflow-y: auto !important;
+    -ms-overflow-style: -ms-autohiding-scrollbar !important;
+    min-height: 16rem;
+    max-height: calc(100vh - 16rem);
+}
+
+.spgLabOrdAsgnGridHeight {
+	overflow: overlay !important;
+	-ms-overflow-y: auto !important;
+    -ms-overflow-style: -ms-autohiding-scrollbar !important;
+    height: 16rem !important;
+}
+
+.spgLabOrdAttBox div:nth-child(2) {
+	margin-right: auto;
+}
+
+.spgLabOrdAttDelBtn {
+    border: 1px solid #5ba435;
+    border-radius: 3px;
+    top: 4px;
+}
+
+.spgLabOrdDetail>section {
+    top: 3.3rem !important;
+}
+
+.spgLabOrdDetail .sapMPageSubHeader {
+	display: none !important;
+}
+
+.spgLabOrdDetailHdrBar {
+    height: 3.5rem !important;
+    line-height: 3rem !important;
+    box-shadow: inset 0 -0.0625rem #fff;
+    border-bottom: solid .0625rem #fff;
+}
+
+.spgLabOrdDetailWOId {
+    padding-left: 1.5rem;
+    color: #333;
+    font-size: 1.375rem !important;
+    line-height: 3.25rem;
+}
+
+.workOrderStatus {
+    color: #fff;
+    width: 6.25rem;
+    height: 1rem;
+    line-height: 1rem;
+    border-radius: 0.1875rem;
+    text-align: center;
+    margin: 0rem;
+    font-size: 0.75rem;
+}
+
+.openStatus {
+    background-color: #eb4f52;
+}
+
+.releasedStatus {
+    background-color: #e87b31;
+}
+
+.workCompletedStatus {
+    background-color: #459676;
+}
+
+.cancelledStatus {
+	background-color: #596AB2;
+}
+
+.spgLabOrdWorkStat {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.spgLabOrdWorkStatus {
+	background-color: #fff;
+    border: 1px solid;
+    border-top: 0px;
+    border-radius: 0.1875rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: 6.125rem;
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: bold;
+    line-height: 1rem;
+    text-align: center;
+}
+
+.spgLabOrdDelayed {
+    color: #eb4f52;
+}
+
+.spgLabOrdOnTrack {
+	color: #30ac20;
+}
+
+.spgLabOrdDetailHdrBtns.sapMSegB,
+.spgLabOrdDetailHdrBtns.sapMBtn {
+	height: 2.5rem !important;	
+}
+
+.spgLabOrdDetailHdrBtns .sapMBtnInner {
+	height: 2.125rem !important;
+}
+
+.spgLabOrdDetailHdrBtns .sapMBtnCustomIcon.sapMBtnIcon {
+	width: 1.875rem;
+    font-size: 0.9375rem;
+}
+
+.spgLabOrdDetailHdrBtns .sapMBtnCustomIcon,
+.spgLabOrdDetailHdrBtns .sapMBtnContent {
+	line-height: 2rem !important;
+}
+
+.spgLabOrdDetailHdrBtns .sapMSegBBtn {
+	height: 2rem;
+	line-height: 1.85rem;
+}
+
+.spgLabOrdDetailContent {
+	min-height: calc(100% - 2.5rem);
+	/*Start of PCR032047++ changes*/
+	width: calc(100% - 1rem) !important;
+    position: relative;
+    left: 1rem;
+    /*End of PCR032047++ changes*/
+}
+
+.spgLabOrdPretaskCheckListRow.sapMListTblRow {
+    height: 3rem;
+}
+
+.spgLabOrdHideToolStatus>div:nth-child(7) {
+    display: none;
+}
+
+/* PCR033603++; added .spgLabOrdHideReason>div:nth-child(11) */
+.spgLabOrdHideReason>div:nth-child(5),
+.spgLabOrdHideReason>div:nth-child(9),
+.spgLabOrdHideReason>div:nth-child(11)  {
+    display: none;
+}
+
+.spgLabOrdSericeTeamText {
+    color: #3d4145;
+}
+
+.spgLabOrdGridBox {
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    height: 4rem;
+}
+
+.spgLabOrdTechnicianName {
+    color: #52565a;
+    font-size: medium;
+    line-height: 1.5rem;
+}
+
+.spgLabOrdTimestamp,
+.spgLabOrdTechnicianRole {
+    color: #818386;
+    font-size: small;
+}
+
+.spgLabOrdAttIcon {
+    font-size: 2rem;
+    color: #e87b31;
+    margin-right: 1rem;
+}
+
+.spgLabOrdAttText {
+    font-size: 0.75rem;
+    color: #4b4e52;
+}
+
+.spgLabOrdPartHistBox,
+.spgLabOrdPassdownBox {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 1.25rem 1rem;
+    margin-top: 0.25rem;
+}
+
+.spgLabOrdPartHistBox {
+	padding: 1rem;
+}
+
+.spgLabOrdPartHistBox>div:nth-child(2) {
+	width: 100%;
+}
+
+.spgLabOrdPassdownBox>div:nth-child(1) {
+    width: 15.5rem !important;
+    margin-right: 1rem;
+}
+
+.spgLabOrdPassdownBox>div:nth-child(2) {
+    width: calc(100% - 23rem);
+}
+
+.spgLabOrdPartHistBox>div:nth-child(3),
+.spgLabOrdPassdownBox>div:nth-child(3) {
+    width: 15rem;
+    text-align: end;
+}
+
+.spgLabOrdPassdownIcon {
+    height: 2.25rem;
+    line-height: 2rem;
+}
+
+.spgLabOrdPartHistIcon:before,
+.spgLabOrdPassdownIcon:before {
+    content: '\e001';
+    font-family: 'SAP-icons';
+    font-size: 1rem;
+    color: #fff;
+    background-color: #5ba435;
+    border-radius: 3rem;
+    padding: 7px 9px;
+    margin-right: 0.75rem;
+    position: relative;
+    top: 2px;
+}
+
+.spgLabOrdPartHistIcon:before {
+    top: 2px;
+    height: 2.25rem;
+    line-height: 2.25rem;
+    width: auto;
+}
+
+
+
+.spgLabOrdPassdownText {
+    color: #32363A;
+    font-size: 0.875rem;
+    margin-top: 2px;
+}
+
+.spgLabOrdPassdownTime {
+	color: #6A6D70;
+	font-size: 12px;
+	line-height: 13.8px;
+	width: 8.5rem; /* PCR033603++ */
+    margin-left: 0.25rem; /* PCR033603++ */
+}
+
+.spgLabOrdAdvSrhBox .sapMVBox:first-child {
+	margin-top: 0rem;
+}
+
+.spgLabOrdAdvSrhBox .sapMVBox {
+	margin-top: 1rem;
+}
+
+.dialogTextMargin {
+    margin: 1.5rem;
+    text-align: center !important;
+}
+
+.spgLabOrdAttBox div:nth-child(2) {
+	width: 85%;
+}
+
+.spgLabOrdHPassdownLog {
+	overflow: auto !important;
+	height: calc(100vh - 9.5rem) !important;
+}
+
+.spgLabOrdTeamsText {
+	padding: 0.25rem 0.5rem 1.5rem 1.5rem;
+}
+
+.spgLabOrdAddTechBox>div:nth-child(1) {
+	width: 100%;
+}
+
+.spgLabOrdDelBtn span.sapMBtnInner.sapMBtnReject,
+.spgLabOrdDelBtn div.sapMBtnInner.sapMBtnReject {
+    background-color: #fff;
+    border-color: #89919A;
+    color: #89919A;
+}
+
+.spgLabOrdDelBtn.sapMBtn:hover>.sapMBtnInner.sapMBtnHoverable.sapMBtnReject .sapMBtnIcon,
+.spgLabOrdDelBtn.sapMBtn:hover>.sapMBtnHoverable.sapMBtnReject:not(.sapMBtnActive),
+.spgLabOrdDelBtn:not(.sapMBtnDisabled)>div.sapMBtnInner.sapMBtnReject.sapMBtnActive {
+	background-color: #89919A !important;
+	border-color: #89919A !important;
+}
+
+.spgLabOrd div.sapMBtnInner.sapMBtnReject>.sapMBtnIcon {
+	color: #89919A;
+}
+
+.spgLabOrdConfListScrollCont {
+    height: calc(100vh - 19rem) !important;
+    overflow: overlay !important;
+    -ms-overflow-y: auto !important;
+    -ms-overflow-style: -ms-autohiding-scrollbar !important;
+}
+
+.spgLabOrdConfListContent {
+	margin-top: 0.5rem;
+	padding: 0.5rem !important;
+    background-color: #FFF !important;
+    border: 1px solid #d1d1d1;
+}
+
+.spgLabOrdPartsReqScrollContHeight {
+	overflow: auto !important;
+	-ms-overflow-y: auto !important;
+    -ms-overflow-style: -ms-autohiding-scrollbar !important;
+    height: calc(100vh - 21.4rem) !important;
+}
+
+.spgLabOrdDialogText {
+	text-align: center !important;
+}
+
+.spgLabOrdPartReqHeaderTable thead tr th:nth-child(1) {
+	/* Start of PCR035464++ changes */ 
+    /* width: 2.2rem; */
+    width: 0rem;  
+    /* End of PCR035464++ changes */
+    padding: 0rem;
+    padding-left: 4px;
+}
+
+.spgLabOrdPartReqHeaderTable thead tr th:nth-child(2) {
+	width: 1.25rem;  /* PCR035464++ */
+	padding-left: 0;
+    padding-right: 0.5rem;
+}
+
+.spgLabOrdPartReqHeaderTable1 thead tr th:nth-child(1) {
+    width: 0rem;
+    padding: 0rem;
+    padding-left: 4px;
+}
+
+.spgLabOrdPartReqHeaderTable1 thead tr th:nth-child(2) {
+	padding-left: 1rem;
+    padding-right: 0.5rem;
+}
+
+.spgLabOrdConfDocxCancel {
+	width: 5.75rem !important;
+	height: 1.85rem !important;
+}
+
+.spgLabOrdConfDocxCancelledStatus {
+	border-radius: 3.78px;
+    color: #fff;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.875rem;
+    margin: 0;
+}
+
+.spgLabOrdAttNoDataText {
+	color: #afb6b8;
+}
+
+.spgLabOrdWorkDescr>div:nth-child(8) {
+	height: auto !important;
+}
+
+/*Start of PCR032047++ changes*/
+
+.spgLabOrdMstBtn .sapMBtnTransparent>.sapMBtnIcon {
+    color: #5ba435 !important;
+}
+
+.spgLabOrdSDBtnBox {
+	background: linear-gradient(to bottom, #dfe3e4, #f3f4f5) !important;
+    position: fixed;
+    top: 0;
+    z-index: 6;
+    width: 16px;
+    height: 100%;
+}
+
+.spgLabOrdFFCLNavBtn {
+	position: relative;
+    top: 50vh;
+    left: 0;
+    width: 10px;
+}
+
+.spgLabOrdFFCLNavBtn div {
+	min-width: 10px;
+}
+
+.spgLabOrdFFCLNavBtn span {
+	width: 8px;
+    margin: 0;
+}
+
+.spgLabOrdFFCLNavBtn .sapMBtnTransparent>.sapMBtnIcon {
+    color: #5ba435 !important; 
+}
+
+.spgLabOrdFFCLNavBtn,.sapUiSizeCompact .spgLabOrdFFCLNavBtn {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    transition: all .1s ease-in;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    overflow: visible
+}
+
+.spgLabOrdFFCLNavBtn .sapMBtnInner,.sapUiSizeCompact .spgLabOrdFFCLNavBtn .sapMBtnInner {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: auto
+}
+
+.spgLabOrdFFCLNavBtn .sapMBtnInner .sapMBtnIcon,.sapUiSizeCompact .spgLabOrdFFCLNavBtn .sapMBtnInner .sapMBtnIcon {
+    line-height: 1.5rem;
+    width: 1rem;
+    font-size: 1rem;
+    margin-left: 0;
+    margin-right: 0
+}
+
+.spgLabOrdFFCLNavBtn .sapMBtnInner:before,.sapUiSizeCompact .spgLabOrdFFCLNavBtn .sapMBtnInner:before {
+    background-image: linear-gradient(to top, #5ba435, rgba(8,84,160,0));
+    background-position-y: -0.3125rem;
+    bottom: 100%
+}
+
+.spgLabOrdFFCLNavBtn .sapMBtnInner:after,.sapUiSizeCompact .spgLabOrdFFCLNavBtn .sapMBtnInner:after {
+    background-image: linear-gradient(to bottom, #5ba435, rgba(8,84,160,0));
+    background-position-y: 0.3125rem;
+    top: 100%
+}
+
+.spgLabOrdFFCLNavBtn .sapMBtnInner:after,
+.sapUiSizeCompact .spgLabOrdFFCLNavBtn .sapMBtnInner:after,
+.spgLabOrdFFCLNavBtn .sapMBtnInner:before,
+.sapUiSizeCompact .spgLabOrdFFCLNavBtn .sapMBtnInner:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 4rem;
+    width: 100%;
+    transition: all .1s ease-in;
+    background-repeat: no-repeat;
+    background-size: 0.0625rem 100%;
+    background-position-x: calc(49.96875%)
+}
+
+.spgLabOrdFFCLNavBtn:hover .sapMBtnInner:not(.sapMBtnActive):after,
+.sapUiSizeCompact .spgLabOrdFFCLNavBtn:hover .sapMBtnInner:not(.sapMBtnActive):after,
+.spgLabOrdFFCLNavBtn:hover .sapMBtnInner:not(.sapMBtnActive):before,
+.sapUiSizeCompact .spgLabOrdFFCLNavBtn:hover .sapMBtnInner:not(.sapMBtnActive):before {
+    height: 7rem
+}
+
+.spgLabOrdFFCLNavBtn .sapMBtnInner,
+.sapUiSizeCompact .spgLabOrdFFCLNavBtn .sapMBtnInner {
+    height: 1.625rem
+}
+
+.spgLabOrdMstSearchField {
+	width: 19rem;
+}
+
+.spgLabOrdMstListHdrBox .sapMFlexItem:nth-child(1),
+.spgLabOrdMstListHdrBox .sapMFlexItem:nth-child(2),
+.spgLabOrdMstListBox .sapMFlexItem {
+	width: 100%;
+}
+
+.spgLabOrdMstListBox .sapMFlexBox {
+	padding: 0.35rem 0.125rem;
+}
+
+/*PCR032047++; added spgLabOrdMstListDashboardHdrBox*/
+.spgLabOrdMstListDashboardHdrBox,
+.spgLabOrdMstListHdrBox {
+	padding-right: 2.5rem;
+}
+
+.spgLabOrdNoWrapText {
+    display: inline-block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 90%;
+}
+
+.spgLabOrdMstLstTech > div:not(:first-child) {
+	display: none;
+}
+
+.spgLabOrdTechGrid {
+	margin: 0 !important;
+}
+
+.spgLabOrdTechGrid>div {
+	margin: 0 0.25rem 0 0 !important;
+}
+
+.spgLabOrdWorkOrdDownloadPopup {
+	position: absolute;
+    top: 5% !important;
+    left: 91% !important;
+    min-width: 15rem !important;
+    visibility: visible;
+    z-index: 10;
+}
+
+.spgLabOrdWorkOrdDownloadPopup .sapMDialogSection {
+	background: #db5c64 !important;
+}
+
+.spgLabOrdWorkOrdDownloadBtn {
+	position: absolute;
+    right: 12px;
+}
+
+.spgLabOrdWorkOrdDownloadBtn .sapMBtnIcon {
+    color: #ffffff !important;
+}
+
+.spgLabOrdWorkOrdDownloadLabel {
+	color: #fff !important;
+	position: relative;
+    left: 15px;
+    top: 12px;
+}
+
+.spgLabOrdWorkOrdDownloadBtn span.sapMBtnInner.sapMBtnTransparent,
+.spgLabOrdWorkOrdDownloadBtn div.sapMBtnInner.sapMBtnTransparent {
+    background-color: #fff0;
+    border-color: #fff0;
+    color: #fff;
+    text-shadow: none;
+}
+
+.spgLabOrdWorkOrdDownloadBtn:not(.sapMBtnDisabled)>.sapMBtnTransparent.sapMBtnActive {
+    background-color: #fff0;
+    border-color: #fff0;
+    color: #fff;
+    text-shadow: none;
+}
+
+.spgLabOrdWorkOrdDownloadBtn.sapMBtn:hover>.sapMBtnInner.sapMBtnHoverable.sapMBtnTransparent .sapMBtnIcon {
+	background: #fff0;
+	color: #fff;
+}
+
+.spgLabOrdWorkOrdDownloadBtn.sapMBtn:hover>.sapMBtnHoverable.sapMBtnTransparent:not(.sapMBtnActive) {
+    background: #fff0;
+    color: #fff0;
+}
+
+.spgLabOrdWorkOrdDownloadBtn:not(.sapMBtnDisabled)>.sapMBtnTransparent.sapMBtnActive .sapMBtnIcon {
+    color: #fff !important;
+}
+
+/* Start of PCR033677++ changes */
+
+.spgLabOrdMstListExpHdrBox > div,
+.spgLabOrdMstListItemHBox1 > div {
+	width: 12rem !important;
+}
+
+/* PCR035112++; changed 17 to 18 */
+.spgLabOrdMstListExpHdrBox > div:nth-child(18) {
+    width: 1.5rem !important;
+}
+
+.spgLabOrdMstListExpHdrBox {
+	z-index: 5;
+    height: 2rem;
+    background: #eeeeee;
+    padding: 0.5rem 1rem !important;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* PCR035112++; changed 16 to 17 */
+.spgLabOrdMstListExpHdrBox > div:nth-child(4),
+.spgLabOrdMstListExpHdrBox > div:nth-child(17),
+.spgLabOrdMstListItemHBox1 > div:nth-child(4),
+.spgLabOrdMstListItemHBox1 > div:nth-child(17) {
+	width: 16rem !important;
+}
+
+/* .spgLabOrdMstListItemHBox .sapMFlexBox {
+	width: 12%;
+}
+
+.spgLabOrdMstListItemHBox .sapMFlexBox:nth-child(4) {
+	width: 26%;
+}
+
+.spgLabOrdMstListItemHBox .sapMFlexBox:nth-child(5) {
+	width: 14%;
+}
+
+.spgLabOrdMstListItemHBox {
+	margin: 0.5rem 0;
+}
+
+.spgLabOrdMstListItemHBox1 {
+	margin: 1rem 0 0.5rem;
+}
+
+.spgLabOrdMstListItemHBox1 .sapMFlexBox {
+	width: 12%;
+}
+
+.spgLabOrdMstListItemHBox1 .sapMFlexBox:nth-child(5),
+.spgLabOrdMstListItemHBox1 .sapMFlexBox:nth-child(6) {
+	width: 14%;
+}
+
+.spgLabOrdMstListItemHBox1 .sapMFlexBox:nth-child(7) {
+	width: 24%;
+} */
+
+/* End of PCR033677++ changes */
+
+.spgLabOrdSearchField {
+	padding: 0.2rem 0rem 0rem !important;
+    height: 2.55rem !important;
+}
+
+.spgLabOrdSearchField.sapMSFDisabled  {
+    opacity: 1 !important;
+}
+
+.spgLabOrdSearchField.sapMSFDisabled .sapMSFI {
+    color: #000000 !important;
+}
+
+.spgLabOrdSearchField.sapMSFDisabled form {
+    background: rgba(242, 242, 242, 0.5) !important;
+}
+
+.spgLabOrdSearchField form {
+	/* Start of PCR035464++ changes */
+    /* height: 2.25rem !important; */
+    height: 2rem !important;
+    /* End of PCR035464++ changes */
+	line-height: 2rem !important;
+	border: 1px solid #89919A;
+}
+
+.spgLabOrdSearchField form input,
+.spgLabOrdSearchField form div {
+	/* Start of PCR035464++ changes */
+    /* height: 2.15rem !important;
+    line-height: 2.15rem !important; */
+    height: 2rem !important;
+    line-height: 2rem !important;
+    /* End of PCR035464++ changes */ 
+}
+
+a[id*='link'].spgLabOrdPreTaskChecListHyperLink,
+.spgLabOrdPreTaskChecListHyperLink.sapMLnk:visited, 
+.spgLabOrdPreTaskChecListHyperLink.sapMLnk:hover {
+    color: #145E96 !important;
+    text-decoration-line: underline !important;
+}
+
+.spgLabOrdSearchField .sapMSFS:after {
+    content: "\e1ef" !important;
+}
+
+.spgLabOrdPretaskCheckListErrRow.sapMListTblRow {
+    height: 3rem;
+    background: #FFF0F0 !important;
+}
+
+.spgLabOrdSearchDetailsBox {
+    padding: 0.35rem 0.5rem 0;
+    background: #3E6F94 !important;
+}
+
+.spgLabOrdSearchDetailsBox1 {
+    padding: 0.35rem 0.5rem 0;
+    background: #0097a7 !important;
+}
+
+.spgLabOrdSearchDetailsText {
+	color: #fff;
+	font-size: small !important;
+}
+
+.spgLabOrdMstListScrollContH1 {
+    height: calc(100% - 2rem) !important;
+}
+
+.spgLabOrdMstListScrollContH2 {
+    height: calc(100% - 3.65rem) !important;
+}
+
+.spgLabOrdMstListScrollContH3 {
+    height: calc(100% - 1.675rem) !important;
+}
+
+.spgLabOrdMstListScrollContH4 {
+    height: 100% !important;
+}
+
+.spgLabOrdAdvSrhSegBtn {
+	margin: 0 !important;
+	margin-left: 0.25rem !important;
+}
+
+.spgLabOrdAdvSrhSegBtn li {
+	height: 1.625rem !important;
+}
+
+.spgLabOrdAdvSrhSegBtn .sapMSegBBtnSel .sapMBtnCustomIcon.sapMBtnIcon {
+    color: #fff !important;
+}
+
+/*End of PCR032047++ changes*/
+
+/* Start of PCR033677++ changes */
+
+/* PCR035112++; added div - 12 */
+.spgLabOrdViewWOGrid>div:nth-child(12),	
+.spgLabOrdViewWOGrid>div:nth-child(11) {
+    height: auto !important;
+}
+
+.closedStatus {
+    background-color: #52504f;
+}
+
+.spgLabOrdMstListScrollCont1 {
+	height: 76vh !important;
+    overflow-y: overlay !important;	
+}
+
+.spgLabOrdMstListScrollCont3 {
+	height: 83.75vh !important;
+    overflow-y: hidden !important;	
+}
+
+.spgLabOrdMstListScrollCont2 {
+	height: 77vh !important;	
+}
+
+.spgLabOrdStagingNo {
+	color: #5ba435 !important;
+}
+
+.spgLabOrdHdrLbl {
+	color: #222325;
+	font-weight: 600;
+}
+
+.spgLabOrdMstListExpHdrBox1 {
+	z-index: 5;
+	height: 2rem;
+	background: #c7c7c7;
+	padding: 0.5rem 1rem !important;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+/* End of PCR033677++ changes */
+
+/* Start of PCR035464++ changes */
+
+.spgLabOrd :not(.sapMBtnDisabled):not(.sapMSBActive)>span.sapMBtnInner.sapMBtnAccept:not(.sapMBtnActive):not(.sapMToggleBtnPressed)>.sapMBtnIcon {
+    color: #ffffff;
+}
+
+.spgLabOrd .sapMInputBaseIcon {
+    color: #5ba435;
+}
+    
+/* End of PCR035464++ changes */
+
+/* Start of PCR035112++ changes */
+
+.spgLabOrdSubmitStat {
+	background-color: #4599C3;
+}
+
+.spgLabOrdApprStat {
+	background-color: #5A8089;
+}
+
+.spgLabOrdRejectedStat {
+	background-color: #C48806;
+}
+
+.spgLabOrdScheduledStat {
+	background-color: #3EB9C5;
+}
+
+.spgLabOrdRejReaHide > div:nth-child(12) {
+	display: none !important;
+}
+
+.spgLabOrdRejReaShow > div:nth-child(12) {
+	display: block !important;
+	height: auto !important;
+}
+/* End of PCR035112++ changes */
+
+/********** Backgrounds **********/
+
+.spgLabOrdB1 {
+	background: #F7F7F7;
+}
+
+.spgLabOrdB2 {
+	background: #fff;
+}
+
+.spgLabOrdB3 {
+	background: #efefef9e;
+}
+
+
+/********** Paddings **********/
+
+.spgLabOrdP1 {
+    padding: 1rem;
+}
+
+.spgLabOrdP2 {
+    padding: 0 0.5rem;
+}
+
+.spgLabOrdP3 {
+	padding: 1.5rem;
+}
+
+.spgLabOrdP4 {
+    padding: 1.25rem 1.5rem;
+}
+
+.spgLabOrdP5 {
+    padding: 1rem 0;
+}
+
+/*Start of PCR032047++ changes*/
+
+.spgLabOrdP6 {
+    padding: 0 0 5px;
+}
+
+/*End of PCR032047++ changes*/
+
+/********** Margins **********/
+
+.spgLabOrdM1 {
+    margin: 1rem;
+}
+
+.spgLabOrdM2 {
+    margin: 0.25rem;
+}
+
+.spgLabOrdMT1 {
+    margin-top: 0.3125rem;
+}
+
+.spgLabOrdMB1 {
+    margin-bottom: 0.4375rem;
+}
+
+.spgLabOrdMRA {
+	margin-right: auto;
+}
+
+.spgLabMBE1 {
+	margin: 0 1.5rem;
+}
+
+
+/********** Media Queries **********/
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1280px) {
+    /*Scroll Bar*/
+    .spgLabOrd ::-webkit-scrollbar {
+        width: 10px !important;
+    }
+    .spgLabOrd ::-webkit-scrollbar-thumb {
+	    background-color: #b2b2b2 !important;
+	}
+}
+
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    /*Scroll Bar*/
+    .spgLabOrd ::-webkit-scrollbar {
+        width: 10px !important;
+    }
+    .spgLabOrd ::-webkit-scrollbar-thumb {
+	    background-color: #b2b2b2 !important;
+	}
+}
+
+
+/* 
+  ##Device = Tablets, Ipads 
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+	.spgLabOrdDetailHdrBar {
+		height: auto !important;
+	}
+    .sapLabOrdDetailHdrBox {
+        width: calc(100% - 2.5rem);
+    }
+    .sapLabOrdDetailHdrBox>div:last-child {
+        position: relative;
+        left: 4rem;
+    }
+    .spgLabOrdDetailWOId {
+    	padding-left: 0.75rem !important;
+    }
+    .spgLabOrdMstListHdrBox {
+        width: 100%;
+    }
+    .spgLabOrd .sapMFeedListItemText {
+	    margin-top: 0px !important;
+	}
+	.spgLabOrd .sapUiRespGrid.sapUiRespGridHSpace1 {
+    	margin: 0 0.25rem;
+	}
+	.spgLabOrd .sapMBtnContent {
+		line-height: 1.5rem;
+	}
+	.spgLabOrdDetail>section {
+	    top: 5.5rem !important;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader.sapMBar {
+	    height: 3rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader .sapMBarPH {
+	    height: 3rem;
+	    line-height: 3rem;
+	}
+	.spgLabOrdDetail .sapMIBar.sapMSubHeader-CTX {
+	    background-color: #ffffff;
+	    border: none;
+	    box-shadow: none;
+	}
+	.spgLabOrdAsgnGridHeight,
+	.spgLabOrdAttGridHeight {
+    	height: calc(100vh - 18rem) !important;
+	}
+	.spgLabOrdP3 {
+	    padding: 0.75rem !important;
+	}
+	.spgLabMBE1 {
+		margin: 0 0.75rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader {
+		display: block !important;
+	}
+	.spgLabOrdM1 {
+	    margin: 0.5rem !important;
+	}
+	.spgLabOrdTeamsText {
+	    padding: 0.25rem 0.5rem 1.5rem 1rem;
+	}
+	.spgLabOrdPassdownBox>div:nth-child(2) {
+	    width: 100%;
+	}
+	.spgLabOrdPartHistBox>div:nth-child(3), 
+	.spgLabOrdPassdownBox>div:nth-child(3) {
+	    text-align: start;
+	    margin-top: 0.5rem;
+	}
+	.spgLabOrdConfListScrollCont {
+	    height: calc(100vh - 17.5rem) !important;
+	}
+	.spgLabOrdPartsReqScrollContHeight {
+	    height: calc(100vh - 20.15rem) !important;
+	}
+	/*Start of PCR032047++ changes*/
+	.spgLabOrdSFBox>div:nth-child(1),
+	.spgLabOrdMstSearchField {
+		width: 100%;
+	}
+	.spgLabOrdDetailContent {
+		width: 100% !important;
+	    position: relative;
+	    left: 0;
+	}
+	/*End of PCR032047++ changes*/
+}
+
+
+/* 
+  ##Device = Mobiles (iPhone 8 Plus)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 414px) and (max-width: 480px) {
+	.spgLabOrdDetailHdrBar {
+		height: auto !important;
+	}
+    .sapLabOrdDetailHdrBox {
+        width: calc(100% - 2.5rem);
+    }
+    .sapLabOrdDetailHdrBox>div:last-child {
+        position: relative;
+        left: 4rem;
+    }
+    .spgLabOrdDetailWOId {
+    	padding-left: 0.75rem !important;
+    }
+    .spgLabOrdMstListHdrBox {
+        width: 100%;
+    }
+    .spgLabOrd .sapMFeedListItemText {
+	    margin-top: 0px !important;
+	}
+	.spgLabOrd .sapUiRespGrid.sapUiRespGridHSpace1 {
+    	margin: 0 0.25rem;
+	}
+	.spgLabOrd .sapMBtnContent {
+		line-height: 1.5rem;
+	}
+	.spgLabOrdDetail>section {
+	    top: 5.5rem !important;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader.sapMBar {
+	    height: 3rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader .sapMBarPH {
+	    height: 3rem;
+	    line-height: 3rem;
+	}
+	.spgLabOrdDetail .sapMIBar.sapMSubHeader-CTX {
+	    background-color: #ffffff;
+	    border: none;
+	    box-shadow: none;
+	}
+	.spgLabOrdAsgnGridHeight,
+	.spgLabOrdAttGridHeight {
+    	height: calc(100vh - 18rem) !important;
+	}
+	.spgLabOrdP3 {
+	    padding: 0.75rem !important;
+	}
+	.spgLabMBE1 {
+		margin: 0 0.75rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader {
+		display: block !important;
+	}
+	.spgLabOrdM1 {
+	    margin: 0.5rem !important;
+	}
+	.spgLabOrdTeamsText {
+	    padding: 0.25rem 0.5rem 1.5rem 1rem;
+	}
+	.spgLabOrdPassdownBox>div:nth-child(2) {
+	    width: 100%;
+	}
+	.spgLabOrdPartHistBox>div:nth-child(3), 
+	.spgLabOrdPassdownBox>div:nth-child(3) {
+	    text-align: start;
+	    margin-top: 0.5rem;
+	}
+	.spgLabOrdConfListScrollCont {
+	    height: calc(100vh - 17.5rem) !important;
+	}
+	.spgLabOrdPartsReqScrollContHeight {
+	    height: calc(100vh - 20.15rem) !important;
+	}
+	/*Start of PCR032047++ changes*/
+	.spgLabOrdSFBox>div:nth-child(1),
+	.spgLabOrdMstSearchField {
+		width: 100%;
+	}
+	.spgLabOrdDetailContent {
+		width: 100% !important;
+	    position: relative;
+	    left: 0;
+	}
+	/*End of PCR032047++ changes*/
+}
+
+
+/* 
+  ##Device = Mobiles (iPhone X)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media screen and (width: 375px),
+screen and (height: 812px) {
+	.spgLabOrdDetailHdrBar {
+		height: auto !important;
+	}
+    .sapLabOrdDetailHdrBox {
+        width: calc(100% - 2.5rem);
+    }
+    .sapLabOrdDetailHdrBox>div:last-child {
+        position: relative;
+        left: 4rem;
+    }
+    .spgLabOrdDetailWOId {
+    	padding-left: 0.75rem !important;
+    }
+    .spgLabOrdMstListHdrBox {
+        width: 100%;
+    }
+    .spgLabOrd .sapMFeedListItemText {
+	    margin-top: 0px !important;
+	}
+	.spgLabOrd .sapUiRespGrid.sapUiRespGridHSpace1 {
+    	margin: 0 0.25rem;
+	}
+	.spgLabOrd .sapMBtnContent {
+		line-height: 1.5rem;
+	}
+	.spgLabOrdDetail>section {
+	    top: 5.5rem !important;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader.sapMBar {
+	    height: 3rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader .sapMBarPH {
+	    height: 3rem;
+	    line-height: 3rem;
+	}
+	.spgLabOrdDetail .sapMIBar.sapMSubHeader-CTX {
+	    background-color: #ffffff;
+	    border: none;
+	    box-shadow: none;
+	}
+	.spgLabOrdAsgnGridHeight,
+	.spgLabOrdAttGridHeight {
+    	height: calc(100vh - 18rem) !important;
+	}
+	.spgLabOrdP3 {
+	    padding: 0.75rem !important;
+	}
+	.spgLabMBE1 {
+		margin: 0 0.75rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader {
+		display: block !important;
+	}
+	.spgLabOrdM1 {
+	    margin: 0.5rem !important;
+	}
+	.spgLabOrdTeamsText {
+	    padding: 0.25rem 0.5rem 1.5rem 1rem;
+	}
+	.spgLabOrdPassdownBox>div:nth-child(2) {
+	    width: 100%;
+	}
+	.spgLabOrdPartHistBox>div:nth-child(3), 
+	.spgLabOrdPassdownBox>div:nth-child(3) {
+	    text-align: start;
+	    margin-top: 0.5rem;
+	}
+	.spgLabOrdConfListScrollCont {
+	    height: calc(100vh - 17.5rem) !important;
+	}
+	.spgLabOrdPartsReqScrollContHeight {
+	    height: calc(100vh - 20.15rem) !important;
+	}
+	/*Start of PCR032047++ changes*/
+	.spgLabOrdSFBox>div:nth-child(1),
+	.spgLabOrdMstSearchField {
+		width: 100%;
+	}
+	.spgLabOrdDetailContent {
+		width: 100% !important;
+	    position: relative;
+	    left: 0;
+	}
+	/*End of PCR032047++ changes*/
+}
+
+
+/* 
+  ##Device = Mobiles (iPhone 8/7/6s/6)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 375px) and (max-width: 413px) {
+	.spgLabOrdDetailHdrBar {
+		height: auto !important;
+	}
+    .sapLabOrdDetailHdrBox {
+        width: calc(100% - 2.5rem);
+    }
+    .sapLabOrdDetailHdrBox>div:last-child {
+        position: relative;
+        left: 4rem;
+    }
+    .spgLabOrdDetailWOId {
+    	padding-left: 0.75rem !important;
+    }
+    .spgLabOrdMstListHdrBox {
+        width: 100%;
+    }
+    .spgLabOrd .sapMFeedListItemText {
+	    margin-top: 0px !important;
+	}
+	.spgLabOrd .sapUiRespGrid.sapUiRespGridHSpace1 {
+    	margin: 0 0.25rem;
+	}
+	.spgLabOrd .sapMBtnContent {
+		line-height: 1.5rem;
+	}
+	.spgLabOrdDetail>section {
+	    top: 5.5rem !important;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader.sapMBar {
+	    height: 3rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader .sapMBarPH {
+	    height: 3rem;
+	    line-height: 3rem;
+	}
+	.spgLabOrdDetail .sapMIBar.sapMSubHeader-CTX {
+	    background-color: #ffffff;
+	    border: none;
+	    box-shadow: none;
+	}
+	.spgLabOrdAsgnGridHeight,
+	.spgLabOrdAttGridHeight {
+    	height: calc(100vh - 18rem) !important;
+	}
+	.spgLabOrdP3 {
+	    padding: 0.75rem !important;
+	}
+	.spgLabMBE1 {
+		margin: 0 0.75rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader {
+		display: block !important;
+	}
+	.spgLabOrdM1 {
+	    margin: 0.5rem !important;
+	}
+	.spgLabOrdTeamsText {
+	    padding: 0.25rem 0.5rem 1.5rem 1rem;
+	}
+	.spgLabOrdPassdownBox>div:nth-child(2) {
+	    width: 100%;
+	}
+	.spgLabOrdPartHistBox>div:nth-child(3), 
+	.spgLabOrdPassdownBox>div:nth-child(3) {
+	    text-align: start;
+	    margin-top: 0.5rem;
+	}
+	.spgLabOrdConfListScrollCont {
+	    height: calc(100vh - 17.5rem) !important;
+	}
+	.spgLabOrdPartsReqScrollContHeight {
+	    height: calc(100vh - 20.15rem) !important;
+	}
+	/*Start of PCR032047++ changes*/
+	.spgLabOrdSFBox>div:nth-child(1),
+	.spgLabOrdMstSearchField {
+		width: 100%;
+	}
+	.spgLabOrdDetailContent {
+		width: 100% !important;
+	    position: relative;
+	    left: 0;
+	}
+	/*End of PCR032047++ changes*/
+}
+
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 374px) {
+	.spgLabOrdDetailHdrBar {
+		height: auto !important;
+	}
+    .sapLabOrdDetailHdrBox {
+        width: calc(100% - 2.5rem);
+    }
+    .sapLabOrdDetailHdrBox>div:last-child {
+        position: relative;
+        left: 4rem;
+    }
+    .spgLabOrdDetailWOId {
+    	padding-left: 0.75rem !important;
+    }
+    .spgLabOrdMstListHdrBox {
+        width: 100%;
+    }
+    .spgLabOrd .sapMFeedListItemText {
+	    margin-top: 0px !important;
+	}
+	.spgLabOrd .sapUiRespGrid.sapUiRespGridHSpace1 {
+    	margin: 0 0.25rem;
+	}
+	.spgLabOrd .sapMBtnContent {
+		line-height: 1.5rem;
+	}	
+	.spgLabOrdDetail>section {
+	    top: 5.5rem !important;
+	}
+	.spgLabOrd .sapMPageSubHeader.sapMBar {
+	    height: 3rem;
+	}
+	.spgLabOrd .sapMPageSubHeader .sapMBarPH {
+	    height: 3rem;
+	    line-height: 3rem;
+	}
+	.spgLabOrdDetail .sapMIBar.sapMSubHeader-CTX {
+	    background-color: #ffffff;
+	    border: none;
+	    box-shadow: none;
+	}
+	.spgLabOrdAsgnGridHeight,
+	.spgLabOrdAttGridHeight {
+    	height: calc(100vh - 18rem) !important;
+	}
+	.spgLabOrdP3 {
+	    padding: 0.75rem !important;
+	}
+	.spgLabMBE1 {
+		margin: 0 0.75rem;
+	}
+	.spgLabOrdDetail .sapMPageSubHeader {
+		display: block !important;
+	}
+	.spgLabOrdM1 {
+	    margin: 0.5rem !important;
+	}
+	.spgLabOrdTeamsText {
+	    padding: 0.25rem 0.5rem 1.5rem 1rem;
+	}
+	.spgLabOrdPassdownBox>div:nth-child(2) {
+	    width: 100%;
+	}
+	.spgLabOrdPartHistBox>div:nth-child(3), 
+	.spgLabOrdPassdownBox>div:nth-child(3) {
+	    text-align: start;
+	    margin-top: 0.5rem;
+	}
+	.spgLabOrdConfListScrollCont {
+	    height: calc(100vh - 17.5rem) !important;
+	}
+	.spgLabOrdPartsReqScrollContHeight {
+	    height: calc(100vh - 20.15rem) !important;
+	}
+	/*Start of PCR032047++ changes*/
+	.spgLabOrdSFBox>div:nth-child(1),
+	.spgLabOrdMstSearchField {
+		width: 100%;
+	}
+	.spgLabOrdDetailContent {
+		width: 100% !important;
+	    position: relative;
+	    left: 0;
+	}
+	/*End of PCR032047++ changes*/
+}

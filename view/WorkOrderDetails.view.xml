@@ -1,0 +1,82 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 10/12/2020  	Vimal Pandu			PCR032047    Phase - 2 changes					*
+ * 02/26/2021   Vimal Pandu			PCR033677	 Phase - 3 changes 					*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+<mvc:View controllerName="com.amat.spg.labord.controller.WorkOrderDetails" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<!-- pcr033677~~; changed busyIndicatorDelay="{detailView>/delay}" -->
+	<Page id="idWorkOrderDetailsPage" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="0"
+		class="spgLabOrdDetail" showFooter="false">
+		<customHeader>
+			<OverflowToolbar class="spgLabOrdDetailHdrBar">
+				<HBox class="sapLabOrdDetailHdrBox" alignItems="Center">
+					<Button icon="sap-icon://nav-back" press="onNavBack" type="Transparent" visible="{device>/system/phone}"
+						class="spgLabOrdDetailHdrBtns spgLabOrdMT1"/>
+					<Text text="{Servicecasenumber}" class="spgLabOrdDetailWOId"/>
+					<!-- PCR035112~~; changed Orderstatus to OrderStatusTxt -->
+					<FormattedText htmlText="{ parts: [{path: 'OrderStatusTxt'}, {path: 'WorkStatus'}], formatter: '.formatter.formatOrderStatusDetail' }" class="sapUiSmallMarginBegin"/>
+				</HBox>
+				<ToolbarSpacer/>
+				<!-- PCR035112~~; changed visible {labOrd>/bModifyWO} -->
+				<Button text="{i18n>completeWOButtonText}" press="onPressCompleteWorkOrder" class="spgLabOrdDetailHdrBtns" 
+					visible="{= ${labOrd>/bModifyWO} &amp;&amp; ${Status} !== 'E0011' &amp;&amp; ${Status} !== 'E0012'}"/>
+				<Button text="{i18n>cancelWOButtonText}" type="Reject" press="onPressCancelWorkOrder" class="spgLabOrdDetailHdrBtns"
+					visible="{labOrd>/bModifyWO}"/>
+				<SegmentedButton id="idWODetSegBtn" selectedKey="{detailView>/sSegBtnSelKey}" select="onSegBtnSelectionChange"
+					width="{= ${device>/system/phone} ? 'auto' : '14rem'}" class="spgLabOrdDetailHdrBtns" visible="{= !${device>/system/phone}}">
+					<items>
+						<SegmentedButtonItem text="{i18n>woSummaryButtonText}" key="Summary"/>
+						<SegmentedButtonItem text="{i18n>orderButtonText}" key="Order" visible="false"/>
+						<SegmentedButtonItem text="{i18n>confirmationButtonText}" key="Confirmation"/>
+					</items>
+				</SegmentedButton>
+				<Button icon="sap-icon://action-settings" press="onPressNotificationSettings" class="sapUiTinyMarginEnd spgLabOrdDetailHdrBtns"
+					visible="false"/>
+			</OverflowToolbar>
+		</customHeader>
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<SegmentedButton selectedKey="{detailView>/sSegBtnSelKey}" select="onSegBtnSelectionChange"
+						width="{= ${device>/system/phone} ? '14rem' : '14rem'}" class="spgLabOrdDetailHdrBtns">
+						<items>
+							<SegmentedButtonItem text="{i18n>woSummaryButtonText}" key="Summary"/>
+							<SegmentedButtonItem text="{i18n>orderButtonText}" key="Order" visible="false"/>
+							<SegmentedButtonItem text="{i18n>confirmationButtonText}" key="Confirmation"/>
+						</items>
+					</SegmentedButton>
+					<Button icon="sap-icon://action-settings" press="onPressNotificationSettings" class="spgLabOrdM2 spgLabOrdDetailHdrBtns" visible="false"/>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<!--Start of PCR032047++ changes-->
+			<VBox class="spgLabOrdSDBtnBox"  visible="{= !${device>/system/phone}}">
+				<Button id="idSideContentBtn" icon="sap-icon://navigation-right-arrow" type="Transparent" class="spgLabOrdFFCLNavBtn" press="onToggleSideContent" />
+			</VBox>
+			<!--End of PCR032047++ changes-->
+			<l:VerticalLayout id="idWorkOrderViewLayout" width="100%" class="spgLabOrdDetailContent"/>
+			<l:VerticalLayout width="100%">
+				<l:content>
+					<core:Fragment fragmentName="com.amat.spg.labord.fragments.AppliedMaterialsConfidential" type="XML"/>
+				</l:content>
+			</l:VerticalLayout>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<!--Start of PCR035112++ changes-->
+				<Button id="idWOApproveBtn" text="{i18n>approveButtonText}" type="Accept" press="onPressApproveWorkOrder"/>
+				<Button id="idWORejectBtn" text="{i18n>rejectButtonText}" type="Transparent" press="onPressRejectWorkOrder"/>
+				<!--End of PCR035112++ changes-->
+				<!-- PCR035112++; added id="idWOUpdateBtn" -->
+				<Button id="idWOUpdateBtn" text="{i18n>updateButtonText}" type="Accept" press="onPressUpdateWorkOrder"/>
+				<Button id="idWOCancelBtn" text="{i18n>cancel}" type="Transparent" press="onPressEditWorkOrder"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

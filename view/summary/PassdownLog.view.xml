@@ -1,0 +1,42 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * 02/01/2021   Vimal Pandu			PCR033603	 Passdown log Date changes 			*
+ * 05/19/2021   Nageswar V			PCR035112	 Phase - 4 changes 					*
+ * ******************************************************************************* -->
+ 
+ <mvc:View controllerName="com.amat.spg.labord.controller.summary.PassdownLog" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<VBox class="spgLabOrdP2 spgLabOrdM1">
+		<Label text="{i18n>addButtonText} {i18n>note}:" visible="{labOrd>/bModifyWO}"/>
+		<TextArea id="idPassdownNote" width="100%" rows="4" placeholder="{i18n>enter} {i18n>note}" visible="{labOrd>/bModifyWO}"/>
+		<HBox justifyContent="End" class="sapUiTinyMarginTop" visible="{labOrd>/bModifyWO}">
+			<Button text="{i18n>saveButtonText}" type="Accept" press="onPressSavePassdownLog" class="sapUiTinyMarginEnd"/>
+			<Button text="{i18n>clearButtonText}" type="Transparent" press="onPressClearPassdownLog"/>
+		</HBox>
+		<Toolbar class="spgLabOrdTabBar" height="2.5rem">
+			<Text text="{passdownView>/title}" class="spgLabOrdTabTitle"/>
+			<!-- Start of PCR035112++ changes -->
+			<Button visible="{labOrd>/bShowPCTBtnCrt}" class="sapUiTinyMarginBegin" text="{i18n>pctBtnText}" icon="sap-icon://add" type="Reject" press="onLaunchPCTCreateUrl" />
+			<Button visible="{labOrd>/bShowPCTBtn}" text="{i18n>pctBtnText}" icon="sap-icon://display" type="Accept" press="onLaunchPCTDisplayUrl" />
+			<!-- End of PCR035112++ changes -->
+			<ToolbarSpacer/>
+		</Toolbar>
+		<ScrollContainer width="{= ${device>/system/phone} ? '100%' : '85%'}" focusable="false" class="spgLabOrdHPassdownLog">
+			<List id="idPassdownLogList" items="{ToPassdownLog}" growing="true" updateFinished="onPassdownLogUpdateFinished" growingThreshold="20"
+				growingScrollToLoad="false" noDataText="{i18n>passdownListNoDataText}">
+				<CustomListItem>
+					<FlexBox direction="{= ${device>/system/phone} ? 'Column' : 'Row'}" class="spgLabOrdPassdownBox" width="100%" alignItems="Center">
+						<Link text="{UserName}" class="spgLabOrdPassdownIcon"/>
+						<FormattedText htmlText="{path: 'NotesLog', formatter: '.formatter.formatPassdownLog'}" class="spgLabOrdPassdownText"/>
+						<!-- Start of PCR033603++ changes -->
+						<!-- <Text text="{path: 'Timestamp', formatter: '.formatter.formatDate'}" class="spgLabOrdPassdownTime"/> -->
+						<Text text="{path: 'Timestamp', formatter: '.formatter.dateFormat'} {path: 'Timestamp', formatter: '.formatter.formatTime'} {i18n>pstTimeZone}" class="spgLabOrdPassdownTime"/>
+						<!-- End of PCR033603++ changes -->
+					</FlexBox>
+				</CustomListItem>
+			</List>
+		</ScrollContainer>
+	</VBox>
+</mvc:View>

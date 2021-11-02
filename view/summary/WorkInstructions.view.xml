@@ -1,0 +1,56 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+ 
+ <mvc:View controllerName="com.amat.spg.labord.controller.summary.WorkInstructions" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<VBox class="spgLabOrdP2 spgLabOrdM1">
+		<Table id="idWorkInstTable" inset="false" mode="MultiSelect">
+			<headerToolbar>
+				<OverflowToolbar>
+					<ComboBox placeholder="{i18n>selectWorkInsPlaceholder}"></ComboBox>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://navigation-up-arrow" press="onPressNotificationSettings" visible="{labOrd>/bModifyWO}"/>
+					<Button icon="sap-icon://navigation-down-arrow" press="onPressNotificationSettings" class="sapUiSmallMarginEnd" visible="{labOrd>/bModifyWO}"/>
+					<Button icon="sap-icon://edit" press="onPressNotificationSettings" visible="{labOrd>/bModifyWO}"/>
+					<Button icon="sap-icon://delete" press="onPressNotificationSettings" class="sapUiSmallMarginEnd" visible="{labOrd>/bModifyWO}"/>
+					<Button type="Accept" icon="sap-icon://add" text="{i18n>Add}" press="onPressWorkInstruction" visible="{labOrd>/bModifyWO}"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<Text text="{i18n>steps}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>mandatory}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>description}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>status}"/>
+				</Column>
+				<Column>
+					<Text text="{i18n>actions}"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem class="spgLabOrdPretaskCheckListRow">
+					<cells>
+						<Text text="{Steps}"/>
+						<Text text="{Mandatory}"/>
+						<Text text="{Description}"/>
+						<Text text="{Status}"/>
+						<HBox>
+							<Button icon="sap-icon://accept" press="onPressApproveWorkInstruction" class="sapUiTinyMarginEnd spgLabOrdCompleteWOBtn"/>
+							<Button icon="sap-icon://decline" press="onPressDeleteWorkInstruction" class="sapUiTinyMarginEnd sapLabOrdCancelWIBtn"/>
+							<Button icon="sap-icon://history" press="onPressWorkInstructionHistory" class="spgLabOrdCompleteWOBtn"/>
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VBox>
+</mvc:View>

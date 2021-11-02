@@ -1,0 +1,33 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+ 
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog noDataText="{i18n>equipmentTableNoDataText}" title="{i18n>selectEquipment}" search="handleToolIdSearch" confirm="handleToolIdSelect"
+		cancel="handleToolIdSelect" items="{toolIdModel>/}">
+		<ColumnListItem>
+			<cells>
+				<Text text="{= !${toolIdModel>Customertoolid} ? ${i18n>notAvailableText} : ${toolIdModel>Customertoolid}} "/>
+				<Text text="{= !${toolIdModel>Serialnumber} ? ${i18n>notAvailableText} : ${toolIdModel>Serialnumber}}"/>
+				<Text text="{= !${toolIdModel>Fabnamedescription} ? ${i18n>notAvailableText} : ${toolIdModel>Fabnamedescription}}"/>
+				<Text text="{= !${toolIdModel>Equipment} ? ${i18n>notAvailableText} : ${toolIdModel>Equipment}}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="tablet" demandPopin="true">
+				<Label text="{i18n>custToolID}"/>
+			</Column>
+			<Column minScreenWidth="tablet" demandPopin="true">
+				<Label text="{i18n>serialNo}"/>
+			</Column>
+			<Column minScreenWidth="tablet" demandPopin="true">
+				<Label text="{i18n>fabName}"/>
+			</Column>
+			<Column minScreenWidth="tablet" demandPopin="true">
+				<Label text="{i18n>equipment}"/>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

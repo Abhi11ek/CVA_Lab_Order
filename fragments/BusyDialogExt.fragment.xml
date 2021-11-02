@@ -1,0 +1,9 @@
+<!-- ****************************************************************************** *
+ * Date     	Author 				PCR No.      Description of change				*
+ * **********  	****************	*********	 ********************************** *
+ * 07/27/2020  	Vimal Pandu			PCR030784    Initial Version					*
+ * ******************************************************************************* -->
+ 
+<core:FragmentDefinition xmlns="sap.m" xmlns:custom="com.amat.spg.labord.extensions" xmlns:core="sap.ui.core">
+	<custom:BusyDialogExt text="{dialog>/dialogDescription/infoDialogDescription}"/>
+</core:FragmentDefinition>
